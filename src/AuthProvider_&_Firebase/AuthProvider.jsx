@@ -7,12 +7,15 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import app from "./Firebase.config";
+import { GithubAuthProvider } from "firebase/auth/cordova";
 
 export const AuthContext = createContext(null);
 const googleProvier = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
@@ -23,6 +26,11 @@ const AuthProvider = ({ children }) => {
   const googleLogIn = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvier);
+  };
+  // github login
+  const githubLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, githubProvider).then(() => {});
   };
 
   // Create user
@@ -52,6 +60,13 @@ const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
+  // sign out user
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
+
+
   // send data
   const authInfo = {
     auth,
@@ -59,9 +74,11 @@ const AuthProvider = ({ children }) => {
     updateUser,
     signInUser,
     googleLogIn,
+    githubLogin,
     user,
     loading,
-    setLoading
+    setLoading,
+    logOut
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

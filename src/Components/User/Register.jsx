@@ -9,6 +9,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider_&_Firebase/AuthProvider";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { googleLogIn, githubLogin, createUser, updateUser, setLoading } =

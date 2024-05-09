@@ -1,8 +1,15 @@
-import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../AuthProvider_&_Firebase/AuthProvider";
 
 const Navbar = () => {
   const [theme, setTheme] = useState("light");
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  console.log(user);
+
+  // theme togle
   useEffect(() => {
     const localTheme = localStorage.getItem("theme");
     document.querySelector("html").setAttribute("data-theme", localTheme);
@@ -20,6 +27,15 @@ const Navbar = () => {
     }
   };
   console.log(theme);
+
+  const handleLogOut = () => {
+    logOut();
+    console.log("log out succed");
+    toast.success("Successfully loged out!", {
+      position: "top-center",
+    });
+    navigate(location?.state ? location.state : "/");
+  };
 
   // route links
   const links = (
@@ -43,7 +59,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div>
+    <div className="w-[1200px] mx-auto">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -80,8 +96,47 @@ const Navbar = () => {
           </ul>
         </div>
         {/* -------------------------------------------------------------------- */}
-        <div className="navbar-end">
-          <Link to='/login'><button>Login</button></Link>
+        <div className="navbar-end ">
+          <div className="">
+            {/* user profile */}
+            {user && (
+              <div
+                tabIndex={0}
+                role="button"
+                className=" w-12 h-12 rounded-full dropdown dropdown-hover dropdown-end "
+              >
+                {/* dropdown user */}
+                <div className=" rounded-full ">
+                  <div className=" rounded-full ">
+                    <img
+                      className="rounded-full w-12 h-12"
+                      alt="Tailwind CSS Navbar component "
+                      src={user.photoURL}
+                    />
+                  </div>
+
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-[500] menu p-2 shadow bg-base-100 rounded-box w-52 "
+                  >
+                    <li>
+                      <a>{user.displayName}</a>
+                    </li>
+                    <li>
+                      <button onClick={handleLogOut} className="btn">
+                        Sign Out
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+          {!user && (
+            <Link to="/login">
+              <button className="btn">Login</button>
+            </Link>
+          )}
 
           {/* theme controler */}
           <div>
