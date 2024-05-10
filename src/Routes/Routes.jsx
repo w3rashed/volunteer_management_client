@@ -5,6 +5,7 @@ import Login from "../Components/User/Login";
 import Register from "../Components/User/Register";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import AddPost from "../Components/AddPost/AddPost";
+import NeedVolunteer from "../Components/NeedVolunteer/NeedVolunteer";
 
 const Routes = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const Routes = createBrowserRouter([
       {
         path: "/add_post",
         element: <AddPost></AddPost>,
+      },
+      {
+        path: "/need_Volunteer",
+        element: <NeedVolunteer></NeedVolunteer>,
       },
       {
         path: "/login",
