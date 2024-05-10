@@ -6,6 +6,7 @@ import Register from "../Components/User/Register";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import AddPost from "../Components/AddPost/AddPost";
 import NeedVolunteer from "../Components/NeedVolunteer/NeedVolunteer";
+import Details from "../Components/NeedVolunteer/Details";
 
 const Routes = createBrowserRouter([
   {
@@ -24,6 +25,12 @@ const Routes = createBrowserRouter([
       {
         path: "/need_Volunteer",
         element: <NeedVolunteer></NeedVolunteer>,
+      },
+      {
+        path: "/details/:id",
+        element: <Details></Details>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/details/${params.id}`),
       },
       {
         path: "/login",

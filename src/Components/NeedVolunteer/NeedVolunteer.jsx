@@ -65,7 +65,7 @@ const NeedVolunteer = () => {
                     <h2 className="card-title">{data.deadline}</h2>
                     <p>{data.category}</p>
                     <p>{data.location}</p>
-                    <Link to={`/view_details/${data._id}`}>
+                    <Link to={`/details/${data._id}`}>
                       <button className="btn">View Details</button>
                     </Link>
                   </div>
