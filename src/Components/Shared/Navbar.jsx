@@ -88,6 +88,22 @@ const Navbar = () => {
           Need Volunteer
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          style={({ isActive, isTransitioning }) => {
+            return {
+              fontWeight: isActive ? "bold" : "",
+              backgroundColor: isActive ? "transparent" : "",
+              // border: isActive ? "1px solid #23BE0A" : "",
+              color: isActive ? "#f7931e" : "",
+              viewTransitionName: isTransitioning ? "slide" : "",
+            };
+          }}
+          to="/my_post"
+        >
+          My Post
+        </NavLink>
+      </li>
     </>
   );
   return (

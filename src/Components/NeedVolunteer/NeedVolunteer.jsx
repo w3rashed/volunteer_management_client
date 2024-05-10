@@ -55,10 +55,7 @@ const NeedVolunteer = () => {
               {lodedData.map((data) => (
                 <div key={data._id} className="card  bg-base-100 shadow-xl">
                   <figure>
-                    <img
-                      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                      alt="Shoes"
-                    />
+                    <img src={data.thumbnail} alt="Shoes" />
                   </figure>
                   <div className="card-body">
                     <h2 className="card-title">{data.title}</h2>

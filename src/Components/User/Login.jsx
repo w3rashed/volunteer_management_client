@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 
 const Login = () => {
-  const { signInUser, googleLogIn, githubLogin, setLoad } =
+  const { signInUser, googleLogIn, githubLogin, setLoading } =
     useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -20,6 +20,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from || "/";
+  console.log(location);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -35,7 +36,7 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
-        setLoad(true);
+        setLoading(true);
         navigate(from, { replace: true });
         toast.success("Successfully signed in", {
           position: "top-center",
@@ -54,10 +55,11 @@ const Login = () => {
   // handle google log in
   const handlegoogleLogIn = () => {
     googleLogIn().then(() => {
+      setLoading(true);
+      navigate(from, { replace: true });
       toast.success("successfully google signed in", {
         position: "top-center",
       });
-      navigate(from, { replace: true });
     });
   };
 

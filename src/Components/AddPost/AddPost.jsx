@@ -18,6 +18,7 @@ const AddPost = () => {
     const description = form.description.value;
     const category = form.category.value;
     const location = form.location.value;
+    const volunteersNeeded = form.volunteersNeeded.value;
     const deadline = form.deadline.value;
     const name = form.name.value;
     const email = form.email.value;
@@ -28,6 +29,7 @@ const AddPost = () => {
       description,
       category,
       location,
+      volunteersNeeded,
       deadline,
       name,
       email,
@@ -116,6 +118,19 @@ const AddPost = () => {
                 name="location"
                 className="grow"
                 placeholder="Enter your location"
+              />
+            </label>
+          </div>
+          <div>
+            <div className="label">
+              <span className="label-text">No. of volunteers needed</span>
+            </div>
+            <label className="input input-bordered flex items-center gap-2">
+              <input
+                type="number"
+                name="volunteersNeeded"
+                className="grow"
+                placeholder="Enter No. of volunteers needed"
               />
             </label>
           </div>

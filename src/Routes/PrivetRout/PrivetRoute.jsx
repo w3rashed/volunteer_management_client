@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider_&_Firebase/AuthProvider";
 import PropTypes from "prop-types";
+import { Navigate, useLocation } from "react-router-dom";
 
 const PrivetRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
+  const location = useLocation();
 
   if (loading) {
     return (
@@ -13,7 +15,8 @@ const PrivetRoute = ({ children }) => {
   if (user) {
     return children;
   }
- 
+
+  return <Navigate state={location.pathname} to="/login" replace></Navigate>;
 };
 
 PrivetRoute.propTypes = {
