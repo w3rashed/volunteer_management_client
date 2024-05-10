@@ -9,6 +9,7 @@ import NeedVolunteer from "../Components/NeedVolunteer/NeedVolunteer";
 import Details from "../Components/NeedVolunteer/Details";
 import MyPost from "../Components/MyPost/MyPost";
 import PrivetRoute from "./PrivetRout/PrivetRoute";
+import UpdatePost from "../Components/MyPost/UpdatePost";
 
 const Routes = createBrowserRouter([
   {
@@ -36,12 +37,17 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/my_post",
-
         element: (
           <PrivetRoute>
             <MyPost></MyPost>
           </PrivetRoute>
         ),
+      },
+      {
+        path: "/update/:id",
+        element: <UpdatePost></UpdatePost>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/volunteer_post/${params.id}`),
       },
       {
         path: "/login",

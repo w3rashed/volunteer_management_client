@@ -2,10 +2,12 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider_&_Firebase/AuthProvider";
 import MyPostRow from "./MyPostRow";
+import Swal from "sweetalert2";
 
 const MyPost = () => {
   const { setLoading, user } = useContext(AuthContext);
   const [lodedData, setLodedData] = useState([]);
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/volunteer_post?email=${user?.email}`)
@@ -19,6 +21,41 @@ const MyPost = () => {
         console.log(error);
       });
   }, [user]);
+
+  
+
+  // delete post
+  const hadleDeletePost = async (id) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "Cancel",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        const { data } = await axios.delete(
+          `http://localhost:5000/volunteer_post/${id}`
+        );
+        if (data.deletedCount > 0) {
+          Swal.fire({
+            title: "Are you sure Deleted!",
+            text: "Your Post has been deleted.",
+            icon: "success",
+          });
+          const remaining = lodedData.filter((data) => data._id !== id);
+          setLodedData(remaining);
+        }
+      } catch (error) {
+        console.error("Error deleting post:", error);
+      }
+    }
+  };
 
   return (
     <div>
@@ -38,8 +75,14 @@ const MyPost = () => {
               </tr>
             </thead>
             <tbody className="">
-              {lodedData.map((data,idx) => (
-                <MyPostRow key={data._id} data={data} idx={idx}></MyPostRow>
+              {lodedData.map((data, idx) => (
+                <MyPostRow
+                  key={data._id}
+                  data={data}
+                  idx={idx}
+                  
+                  hadleDeletePost={hadleDeletePost}
+                ></MyPostRow>
               ))}
             </tbody>
           </table>
