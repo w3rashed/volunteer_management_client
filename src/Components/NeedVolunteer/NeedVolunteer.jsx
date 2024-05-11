@@ -6,6 +6,14 @@ import { CgLayoutList } from "react-icons/cg";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Link } from "react-router-dom";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Typography,
+} from "@material-tailwind/react";
+import { Input } from "@material-tailwind/react";
+import { IoSearchOutline } from "react-icons/io5";
 
 const NeedVolunteer = () => {
   const { setLoading } = useContext(AuthContext);
@@ -25,43 +33,21 @@ const NeedVolunteer = () => {
   }, []);
   console.log(lodedData);
 
-  const handleSearch = (e) => {
-    const data = e.target.value;
-    console.log(data);
-    //   const filter = lodedData.find((data) => data.title === data);
-    //   setLodedData(Array.from(filter));
-  };
+  
 
   return (
     <div>
-      <h2>NeedVolunteer:{lodedData?.length}</h2>
+      <h2 className="text-center">Need Volunteer Posts:{lodedData?.length}</h2>
       <div>
         <Tabs>
-          {/* search by title */}
+          <div className="flex justify-center items-center gap-9">
+            {/* search by title */}
 
-          <div>
-            <label className="input input-bordered flex items-center gap-2">
-              <input
-                onChange={handleSearch}
-                type="text"
-                className="grow"
-                placeholder="Search"
-              />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="w-4 h-4 opacity-70"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </label>
-          </div>
-          <div className="flex justify-end">
+            <div>
+              <div className="w-72">
+                <Input label="Search" icon={<IoSearchOutline />} />
+              </div>
+            </div>
             <TabList>
               <Tab>
                 <BsGrid3X3Gap></BsGrid3X3Gap>
@@ -73,23 +59,50 @@ const NeedVolunteer = () => {
           </div>
           {/* layout card */}
           <TabPanel>
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {lodedData.map((data) => (
-                <div key={data._id} className="card  bg-base-100 shadow-xl">
-                  <figure>
-                    <img src={data.thumbnail} alt="Shoes" />
-                  </figure>
-                  <div className="card-body">
-                    <h2 className="card-title">{data.title}</h2>
-                    <h2 className="card-title">
-                      {data.deadline.split("T")[0]}
-                    </h2>
-                    <p>{data.category}</p>
-                    <p>{data.location}</p>
-                    <Link to={`/details/${data._id}`}>
-                      <button className="btn">View Details</button>
-                    </Link>
-                  </div>
+                <div key={data._id}>
+                  <Card className="mt-6 ">
+                    <CardHeader
+                      color="blue-gray"
+                      className="relative  h-[300px]"
+                    >
+                      <img src={data.thumbnail} alt="card-image" />
+                    </CardHeader>
+                    <CardBody>
+                      <div className="flex  justify-between">
+                        <Typography
+                          variant="h5"
+                          color="blue-gray"
+                          className="mb-2"
+                        >
+                          {data.title}
+                        </Typography>
+                        <Typography>
+                          {" "}
+                          <span className="font-semibold">Deadline:</span>
+                          {data.deadline.split("T")[0]}
+                        </Typography>
+                      </div>
+                      <div className="flex  justify-between">
+                        <div>
+                          <Typography className="flex">
+                            <span className="font-semibold">Category:</span>{" "}
+                            {data.category}
+                          </Typography>
+                          <Typography className="flex">
+                            <span className="font-semibold">
+                              Volunteer Ndded:
+                            </span>{" "}
+                            {data.volunteersNeeded}
+                          </Typography>
+                        </div>
+                        <Link to={`/details/${data._id}`} className=" btn ">
+                          <button className="border">View Details</button>
+                        </Link>
+                      </div>
+                    </CardBody>
+                  </Card>
                 </div>
               ))}
             </div>
