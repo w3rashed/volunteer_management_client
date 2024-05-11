@@ -11,7 +11,7 @@ const MyPostRow = ({ data, idx, hadleDeletePost }) => {
       <td>{data.category}</td>
       <td>{data.name}</td>
       <td>{data.email}</td>
-      <td>{data.deadline}</td>
+      <td>{data.deadline.split("T")[0]}</td>
       <td className="flex gap-2">
         <Link to={`/update_post/${data._id}`}>
           <button className="btn">

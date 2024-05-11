@@ -33,8 +33,8 @@ const UpdatePost = () => {
       description,
       category,
       location,
-      volunteersNeeded,
-      deadline,
+      volunteersNeeded: Number(volunteersNeeded),
+      deadline: new Date(deadline),
       name,
       email,
     };
@@ -135,7 +135,7 @@ const UpdatePost = () => {
                   <DatePicker
                     showIcon
                     name="deadline"
-                    selected={data.deadline}
+                    selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     icon={
                       <svg

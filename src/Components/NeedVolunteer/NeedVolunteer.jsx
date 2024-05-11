@@ -81,7 +81,9 @@ const NeedVolunteer = () => {
                   </figure>
                   <div className="card-body">
                     <h2 className="card-title">{data.title}</h2>
-                    <h2 className="card-title">{data.deadline}</h2>
+                    <h2 className="card-title">
+                      {data.deadline.split("T")[0]}
+                    </h2>
                     <p>{data.category}</p>
                     <p>{data.location}</p>
                     <Link to={`/details/${data._id}`}>
