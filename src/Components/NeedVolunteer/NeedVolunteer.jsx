@@ -6,6 +6,7 @@ import { CgLayoutList } from "react-icons/cg";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Link } from "react-router-dom";
+
 import {
   Card,
   CardHeader,
@@ -14,6 +15,7 @@ import {
 } from "@material-tailwind/react";
 import { Input } from "@material-tailwind/react";
 import { IoSearchOutline } from "react-icons/io5";
+import NeedVolunteerTableRow from "./NeedVolunteerTableRow";
 
 const NeedVolunteer = () => {
   const { setLoading } = useContext(AuthContext);
@@ -33,7 +35,16 @@ const NeedVolunteer = () => {
   }, []);
   console.log(lodedData);
 
-  
+  // ---------------------------------------------------------------------
+  const TABLE_HEAD = [
+    "",
+    " Thumbnail",
+    "Title",
+    "Category",
+    "Location",
+    "Deadline",
+    "",
+  ];
 
   return (
     <div>
@@ -109,7 +120,37 @@ const NeedVolunteer = () => {
           </TabPanel>
           {/* layout table */}
           <TabPanel>
-            <h2>Any content 2</h2>
+            <Card className="h-full w-full overflow-scroll">
+              <table className="w-full min-w-max table-auto text-left">
+                <thead>
+                  <tr>
+                    {TABLE_HEAD.map((head) => (
+                      <th
+                        key={head}
+                        className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+                      >
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal leading-none opacity-70"
+                        >
+                          {head}
+                        </Typography>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {lodedData.map((data, idx) => (
+                    <NeedVolunteerTableRow
+                      key={data._id}
+                      data={data}
+                      idx={idx}
+                    ></NeedVolunteerTableRow>
+                  ))}
+                </tbody>
+              </table>
+            </Card>
           </TabPanel>
         </Tabs>
       </div>

@@ -1,0 +1,54 @@
+import { Typography } from "@material-tailwind/react";
+
+const NeedVolunteerTableRow = ({ data, idx }) => {
+  const date = new Date(data.deadline);
+  date.setDate(date.getDate() + 1);
+  const updatedDateString = date.toISOString();
+  const {
+    thumbnail,
+    title,
+
+    category,
+    location,
+    volunteersNeeded,
+  } = data;
+  return (
+    <tr key={thumbnail} className="even:bg-blue-gray-50/50">
+      <td className="p-4">
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          {idx + 1}
+        </Typography>
+      </td>
+      <td className="p-4">
+        <img src={thumbnail} alt="" className=" rounded-full w-20 h-20" />
+      </td>
+      <td className="p-4">
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          {title}
+        </Typography>
+      </td>
+      <td className="p-4">
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          {category}
+        </Typography>
+      </td>
+      <td className="p-4">
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          {location}
+        </Typography>
+      </td>
+      <td className="p-4">
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          {updatedDateString.split("T")[0]}
+        </Typography>
+      </td>
+      <td className="p-4">
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          {volunteersNeeded}
+        </Typography>
+      </td>
+    </tr>
+  );
+};
+
+export default NeedVolunteerTableRow;
