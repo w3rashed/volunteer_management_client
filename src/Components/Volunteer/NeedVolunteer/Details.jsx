@@ -1,11 +1,10 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Details = () => {
   const data = useLoaderData();
   console.log(data);
   return (
     <div>
-      <h2>hiiiiiiiiiiiiiiii:{data._id}</h2>
       <div>
         {/* left */}
         <div className="w-96 mx-auto">
@@ -27,7 +26,9 @@ const Details = () => {
               <h2>
                 Email: <span>{data.email}</span>
               </h2>
-              <button className="btn">Be a Volunteer</button>
+              <Link to={`/be_volunteer/${data._id}`}>
+                <button className="btn">Be a Volunteer</button>
+              </Link>
             </div>
           </div>
         </div>

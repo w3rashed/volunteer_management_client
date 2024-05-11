@@ -43,7 +43,7 @@ const NeedVolunteerTableRow = ({ data, idx }) => {
         </Typography>
       </td>
       <td className="p-4">
-        <Typography variant="small" color="blue-gray" className="font-normal">
+        <Typography variant="small" color="blue-gray" className="font-normal ml-[30%]">
           {volunteersNeeded}
         </Typography>
       </td>

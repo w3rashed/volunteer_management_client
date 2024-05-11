@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../AuthProvider_&_Firebase/AuthProvider";
+import { AuthContext } from "../../../AuthProvider_&_Firebase/AuthProvider";
 import axios from "axios";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import { CgLayoutList } from "react-icons/cg";
@@ -43,15 +43,17 @@ const NeedVolunteer = () => {
     "Category",
     "Location",
     "Deadline",
-    "",
+    "No. of volunteer needed",
   ];
+
+  // search function
 
   return (
     <div>
       <h2 className="text-center">Need Volunteer Posts:{lodedData?.length}</h2>
       <div>
         <Tabs>
-          <div className="flex justify-center items-center gap-9">
+          <div className="flex justify-center items-center gap-9 mb-10">
             {/* search by title */}
 
             <div>
@@ -73,7 +75,7 @@ const NeedVolunteer = () => {
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {lodedData.map((data) => (
                 <div key={data._id}>
-                  <Card className="mt-6 ">
+                  <Card className="mt-6 hover:border-b-8 hover:duration-500 hover:border-[#bf0a30]">
                     <CardHeader
                       color="blue-gray"
                       className="relative  h-[300px]"

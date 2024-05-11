@@ -1,13 +1,10 @@
-import { data } from "autoprefixer";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {
   Card,
   CardHeader,
   CardBody,
-  CardFooter,
   Typography,
-  Button,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
@@ -28,7 +25,7 @@ const UpcomDeadlineCards = () => {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {lodedData.map((data) => (
           <div key={data._id}>
-            <Card className="mt-6 ">
+            <Card className="mt-8 hover:border-b-8 hover:duration-500 hover:border-[#bf0a30]">
               <CardHeader color="blue-gray" className="relative  h-[300px]">
                 <img src={data.thumbnail} alt="card-image" />
               </CardHeader>

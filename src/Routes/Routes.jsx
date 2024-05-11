@@ -5,11 +5,12 @@ import Login from "../Components/User/Login";
 import Register from "../Components/User/Register";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import AddPost from "../Components/AddPost/AddPost";
-import NeedVolunteer from "../Components/NeedVolunteer/NeedVolunteer";
-import Details from "../Components/NeedVolunteer/Details";
+import NeedVolunteer from "../Components/Volunteer/NeedVolunteer/NeedVolunteer";
+import Details from "../Components/Volunteer/NeedVolunteer/Details";
 import MyPost from "../Components/MyPost/MyPost";
 import PrivetRoute from "./PrivetRout/PrivetRoute";
 import UpdatePost from "../Components/MyPost/UpdatePost";
+import BeAVolunteer from "../Components/Volunteer/BeAVolunteer/BeAVolunteer";
 
 const Routes = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const Routes = createBrowserRouter([
         element: <Details></Details>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/details/${params.id}`),
+      },
+      {
+        path: "/be_volunteer/:id",
+        element: <BeAVolunteer></BeAVolunteer>,
       },
       {
         path: "/my_post",
