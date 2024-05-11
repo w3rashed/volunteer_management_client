@@ -13,7 +13,7 @@ const MyPostRow = ({ data, idx, hadleDeletePost }) => {
       <td>{data.email}</td>
       <td>{data.deadline}</td>
       <td className="flex gap-2">
-        <Link to={`/update/:${data._id}`}>
+        <Link to={`/update_post/${data._id}`}>
           <button className="btn">
             <FaEdit></FaEdit>
           </button>
