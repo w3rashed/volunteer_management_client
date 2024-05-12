@@ -11,7 +11,7 @@ const UpdatePost = () => {
   const data = useLoaderData();
   console.log(data);
   const { user } = useContext(AuthContext);
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date(data.deadline));
 
   const handleUpdate = (e) => {
     e.preventDefault();

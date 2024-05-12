@@ -74,28 +74,33 @@ const NeedVolunteer = () => {
           <TabPanel>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {lodedData.map((data) => (
-                <div key={data._id}>
-                  <Card className="mt-6 hover:border-b-8 hover:duration-500 hover:border-[#bf0a30]">
+                <div key={data._id} className="">
+                  <Card  className="mt-6  hover:border-b-8 hover:duration-500 hover:border-[#bf0a30] ">
                     <CardHeader
                       color="blue-gray"
                       className="relative  h-[300px]"
                     >
                       <img src={data.thumbnail} alt="card-image" />
                     </CardHeader>
-                    <CardBody>
+                    <CardBody className="">
                       <div className="flex  justify-between">
-                        <Typography
-                          variant="h5"
-                          color="blue-gray"
-                          className="mb-2"
-                        >
-                          {data.title}
-                        </Typography>
-                        <Typography>
-                          {" "}
-                          <span className="font-semibold">Deadline:</span>
-                          {data.deadline.split("T")[0]}
-                        </Typography>
+                        <div>
+                          <Typography
+                            variant="h5"
+                            color="blue-gray"
+                            className="mb-2 "
+                            style={{ width: "200px" }}
+                          >
+                            {data.title}
+                          </Typography>
+                        </div>
+                        <div>
+                          <Typography>
+                            {" "}
+                            <span className="font-semibold">Deadline:</span>
+                            {data.deadline.split("T")[0]}
+                          </Typography>
+                        </div>
                       </div>
                       <div className="flex  justify-between">
                         <div>

@@ -9,6 +9,7 @@ import { BsCalendar2Date } from "react-icons/bs";
 
 const AddPost = () => {
   const { user } = useContext(AuthContext);
+  const userPhoto = user?.photoURL;
   const [startDate, setStartDate] = useState(new Date());
 
   const handleAddPost = (e) => {
@@ -35,6 +36,7 @@ const AddPost = () => {
       deadline: new Date(deadline),
       name,
       email,
+      userPhoto,
     };
     console.log(post);
     axios

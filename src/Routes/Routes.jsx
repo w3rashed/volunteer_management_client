@@ -39,6 +39,8 @@ const Routes = createBrowserRouter([
       {
         path: "/be_volunteer/:id",
         element: <BeAVolunteer></BeAVolunteer>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/details/${params.id}`),
       },
       {
         path: "/my_post",

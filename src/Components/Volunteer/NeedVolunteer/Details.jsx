@@ -1,39 +1,140 @@
 import { Link, useLoaderData } from "react-router-dom";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Avatar,
+  Tooltip,
+} from "@material-tailwind/react";
+import { useContext } from "react";
+import { AuthContext } from "../../../AuthProvider_&_Firebase/AuthProvider";
 
 const Details = () => {
   const data = useLoaderData();
+  const { user } = useContext(AuthContext);
   console.log(data);
+  // console.log(user);
+  const date = new Date(data.deadline);
+  date.setDate(date.getDate() + 1);
+  const updatedDateString = date.toISOString();
   return (
-    <div>
-      <div>
-        {/* left */}
-        <div className="w-96 mx-auto">
-          <div className="card  bg-base-100 shadow-xl">
-            <figure>
-              <img src={data.thumbnail} alt="Shoes" />
-            </figure>
-            <div className="card-body">
-              <div className="flex gap-6">
-                <h2>{data.title}</h2> <p>{data.deadline}</p>
-              </div>
-              <h3>{data.category}</h3>
-              <p>No. of volunteers needed: {data.volunteersNeeded}</p>
-              <p>Description: {data.description}</p>
-              <p>Location: {data.location}</p>
-              <h2>
-                Name: <span>{data.name}</span>
-              </h2>
-              <h2>
-                Email: <span>{data.email}</span>
-              </h2>
-              <Link to={`/be_volunteer/${data._id}`}>
-                <button className="btn">Be a Volunteer</button>
-              </Link>
+    <div className="">
+      {/* banner */}
+      <div
+        className="hero min-h-[calc(100vh-400px)] mb-10"
+        style={{
+          backgroundImage: "url(https://i.ibb.co/TqvLCbh/image.png)",
+        }}
+      >
+        <div className="hero-overlay bg-opacity-70"></div>
+        <div className="hero-content text-center text-white">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl ">Post Details</h1>
+            <div>
+              <Link
+                to="/need_Volunteer"
+                className="hover:border-b-2 hover:duration-300"
+              >
+                Need Volunteer
+              </Link>{" "}
+              <span>/</span>{" "}
+              <Link className="border-b-2 font-bold">Details</Link>
             </div>
           </div>
         </div>
-        {/* right */}
-        <div></div>
+      </div>
+      <div>
+        <Card className=" overflow-hidden">
+          <CardHeader
+            floated={false}
+            shadow={false}
+            color="transparent"
+            className="m-0 rounded-none"
+          >
+            <img
+              src={data.thumbnail}
+              alt="ui/ux review check"
+              className="w-full max-h-[24rem]"
+            />
+          </CardHeader>
+          <CardBody>
+            <CardFooter className="flex items-center justify-between">
+              <div className="flex items-center -space-x-3">
+                <div className="flex gap-3 ">
+                  <Tooltip content={data.name}>
+                    <Avatar
+                      size="xl"
+                      variant="circular"
+                      alt={data.name}
+                      src={data.userPhoto}
+                    />
+                  </Tooltip>
+                  <div>
+                    <h2 className="font-black  text-2xl text-black ">
+                      {data.name}
+                    </h2>
+                    <h2>{data.email}</h2>
+                  </div>
+                </div>
+              </div>
+              <Typography className="flex">
+                <Typography variant="h6" className="">
+                  DeadLine:
+                </Typography>{" "}
+                {updatedDateString.split("T")[0]}
+              </Typography>
+            </CardFooter>
+            <Typography variant="h4" color="blue-gray">
+              {data.title}
+            </Typography>
+            {/* ------------- */}
+            <Typography
+              variant=""
+              color="gray"
+              className="mt-3 font-normal flex items-center"
+            >
+              <Typography variant="h6" className="">
+                Needed volunteer:
+              </Typography>
+              {data.volunteersNeeded}
+            </Typography>
+            {/* ------------- */}
+            <Typography
+              variant=""
+              color="gray"
+              className="mt-3 font-normal flex items-center"
+            >
+              <Typography variant="h6" className="">
+                Category:
+              </Typography>
+              {data.category}
+            </Typography>
+            {/* ------------- */}
+            <Typography
+              variant=""
+              color="gray"
+              className="mt-3 font-normal flex items-center"
+            >
+              <Typography variant="h6" className="">
+                Location:
+              </Typography>
+              {data.location}
+            </Typography>
+            {/* ------------- */}
+            <Typography variant="" color="gray" className="mt-3 font-normal">
+              {data.description}
+            </Typography>
+          </CardBody>
+
+          <Link
+            to={`/be_volunteer/${data._id}`}
+            className="flex justify-center"
+          >
+            <button className="mb-10 btn">Be a Volunteer</button>
+          </Link>
+        </Card>
       </div>
     </div>
   );
