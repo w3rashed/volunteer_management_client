@@ -42,13 +42,17 @@ const Routes = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/details/${params.id}`),
+          fetch(
+            `https://volunteer-management-server-two.vercel.app/details/${params.id}`
+          ),
       },
       {
         path: "/be_volunteer/:id",
         element: <BeAVolunteer></BeAVolunteer>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/details/${params.id}`),
+          fetch(
+            `https://volunteer-management-server-two.vercel.app/details/${params.id}`
+          ),
       },
       {
         path: "/my_post",
@@ -62,7 +66,9 @@ const Routes = createBrowserRouter([
         path: "/update_post/:id",
         element: <UpdatePost></UpdatePost>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/details/${params.id}`),
+          fetch(
+            `https://volunteer-management-server-two.vercel.app/details/${params.id}`
+          ),
       },
       {
         path: "/login",

@@ -1,5 +1,5 @@
 const useUrl = () => {
-  const url = "http://localhost:5000";
+  const url = "https://volunteer-management-server-two.vercel.app";
   return url;
 };
 

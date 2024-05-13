@@ -40,7 +40,10 @@ const AddPost = () => {
     };
     console.log(post);
     axios
-      .post("http://localhost:5000/volunteer_post", post)
+      .post(
+        "https://volunteer-management-server-two.vercel.app/volunteer_post",
+        post
+      )
       .then((res) => {
         console.log(res);
         if (res.data.insertedId) {

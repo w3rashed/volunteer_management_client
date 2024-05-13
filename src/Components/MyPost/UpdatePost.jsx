@@ -40,7 +40,10 @@ const UpdatePost = () => {
     };
     console.log(update);
     axios
-      .patch(`http://localhost:5000/volunteer_post/${data._id}`, update)
+      .patch(
+        `https://volunteer-management-server-two.vercel.app/volunteer_post/${data._id}`,
+        update
+      )
       .then((res) => {
         console.log(res);
         if (res.data.modifiedCount > 0) {
@@ -182,7 +185,7 @@ const UpdatePost = () => {
               label="Thumbnail"
             />
           </div>
-          <input className="btn" type="submit" value="Post" />
+          <input className="btn" type="submit" value="Update Post" />
         </form>
       </div>
     </div>

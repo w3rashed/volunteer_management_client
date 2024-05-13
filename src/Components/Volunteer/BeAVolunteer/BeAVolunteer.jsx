@@ -38,7 +38,9 @@ const BeAVolunteer = () => {
 
     // update needed volunteer
     axios
-      .patch(`http://localhost:5000/updateChanges/${data._id}`)
+      .patch(
+        `https://volunteer-management-server-two.vercel.app/updateChanges/${data._id}`
+      )
       .then((res) => {
         console.log(res);
         if (res.data.modifiedCount > 0) {
@@ -52,7 +54,10 @@ const BeAVolunteer = () => {
       });
 
     axios
-      .patch(`http://localhost:5000/be_volunteer`, beAVolunteer)
+      .patch(
+        `https://volunteer-management-server-two.vercel.app/be_volunteer`,
+        beAVolunteer
+      )
       .then((res) => {
         console.log(res.data);
       });

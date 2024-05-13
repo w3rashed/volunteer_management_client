@@ -12,8 +12,8 @@ const MyPost = () => {
   const { setLoading, user } = useContext(AuthContext);
   const [lodedData, setLodedData] = useState([]);
   const [beVolunteer, setBevolunteer] = useState([]);
-  const url = `http://localhost:5000/volunteer_post?email=${user?.email}`;
-  const url2 = `http://localhost:5000/be_volunteer?email=${user?.email}`;
+  const url = `https://volunteer-management-server-two.vercel.app/volunteer_post?email=${user?.email}`;
+  const url2 = `https://volunteer-management-server-two.vercel.app/be_volunteer?email=${user?.email}`;
 
   useEffect(() => {
     axios
@@ -58,7 +58,7 @@ const MyPost = () => {
     if (result.isConfirmed) {
       try {
         const { data } = await axios.delete(
-          `http://localhost:5000/volunteer_post/${id}`
+          `https://volunteer-management-server-two.vercel.app/volunteer_post/${id}`
         );
         if (data.deletedCount > 0) {
           Swal.fire({
@@ -89,12 +89,12 @@ const MyPost = () => {
     if (result.isConfirmed) {
       try {
         const { data } = await axios.delete(
-          `http://localhost:5000/be_volunteer/${id}/`
+          `https://volunteer-management-server-two.vercel.app/be_volunteer/${id}/`
         );
         // update needed volunteer
 
         // axios
-        //   .patch(`http://localhost:5000/updateCancleRequest/${data._id}`)
+        //   .patch(`https://volunteer-management-server-two.vercel.app/updateCancleRequest/${data._id}`)
         //   .then((res) => {
         //     console.log(res);
         //   })
@@ -105,8 +105,8 @@ const MyPost = () => {
         // ------------------update end
         if (data.deletedCount > 0) {
           Swal.fire({
-            title: "Are you sure Deleted!",
-            text: "Your Post has been deleted.",
+            title: "Are you sure Cancel!",
+            text: "Your request has been cancel.",
             icon: "success",
           });
           const remaining = beVolunteer.filter((data) => data._id !== id);
@@ -125,7 +125,7 @@ const MyPost = () => {
   //   return <h2>hiiiiiiiiiiiiiiiiiii</h2>;
   // }
 
-  console.log(beVolunteer, "kfdlsffffffffffffffffffffffff");
+  console.log(beVolunteer);
   return (
     <div>
       <Tabs>
@@ -139,7 +139,7 @@ const MyPost = () => {
             {lodedData.length === 0 ? (
               <div>
                 <h5 className="font-bold text-2xl text-center">
-                  You You Havent Post available please post for volunteer
+                  You havent any posts
                 </h5>
               </div>
             ) : (

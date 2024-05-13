@@ -22,7 +22,8 @@ const NeedVolunteer = () => {
   const [lodedData, setLodedData] = useState([]);
   const [search, setSearch] = useState("");
 
-  const url = "http://localhost:5000/all_volunteer_post";
+  const url =
+    "https://volunteer-management-server-two.vercel.app/all_volunteer_post";
   useEffect(() => {
     axios
       .get(url)
@@ -55,7 +56,9 @@ const NeedVolunteer = () => {
   };
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/all_volunteer_post?title=${search}`)
+      .get(
+        `https://volunteer-management-server-two.vercel.app/all_volunteer_post?title=${search}`
+      )
       .then((res) => {
         //   console.log(res.data);
         setLoading(false);
@@ -122,7 +125,7 @@ const NeedVolunteer = () => {
                           <Typography>
                             {" "}
                             <span className="font-semibold">Deadline:</span>
-                            {data.deadline.split("T")[0]}
+                            {data.deadline?.split("T")[0]}
                           </Typography>
                         </div>
                       </div>

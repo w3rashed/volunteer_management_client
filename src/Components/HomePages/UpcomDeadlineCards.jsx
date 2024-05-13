@@ -12,7 +12,7 @@ const UpcomDeadlineCards = () => {
   const [lodedData, setLodedData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/sort_post")
+      .get("https://volunteer-management-server-two.vercel.app/sort_post")
       .then((res) => setLodedData(res.data.slice(0, 6)));
   }, []);
   console.log(lodedData);
@@ -37,7 +37,7 @@ const UpcomDeadlineCards = () => {
                   <Typography>
                     {" "}
                     <span className="font-semibold">Deadline:</span>
-                    {data.deadline.split("T")[0]}
+                    {data.deadline?.split("T")[0]}
                   </Typography>
                 </div>
                 <div className="flex  justify-between">
@@ -60,6 +60,9 @@ const UpcomDeadlineCards = () => {
           </div>
         ))}
       </div>
+      <Link to="/need_Volunteer" className="flex justify-center  ">
+        <button className="btn">See all posts</button>
+      </Link>
     </div>
   );
 };

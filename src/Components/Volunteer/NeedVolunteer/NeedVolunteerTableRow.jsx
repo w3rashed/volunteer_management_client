@@ -39,11 +39,15 @@ const NeedVolunteerTableRow = ({ data, idx }) => {
       </td>
       <td className="p-4">
         <Typography variant="small" color="blue-gray" className="font-normal">
-          {updatedDateString.split("T")[0]}
+          {updatedDateString?.split("T")[0]}
         </Typography>
       </td>
       <td className="p-4">
-        <Typography variant="small" color="blue-gray" className="font-normal ml-[30%]">
+        <Typography
+          variant="small"
+          color="blue-gray"
+          className="font-normal ml-[30%]"
+        >
           {volunteersNeeded}
         </Typography>
       </td>
