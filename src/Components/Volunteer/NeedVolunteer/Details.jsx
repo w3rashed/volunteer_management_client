@@ -7,19 +7,21 @@ import {
   Typography,
   Avatar,
   Tooltip,
-  Button,
 } from "@material-tailwind/react";
-import { useContext } from "react";
-import { AuthContext } from "../../../AuthProvider_&_Firebase/AuthProvider";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const Details = () => {
   const data = useLoaderData();
-  const { user } = useContext(AuthContext);
+
   console.log(data);
   // console.log(user);
   const date = new Date(data.deadline);
   date.setDate(date.getDate() + 1);
   const updatedDateString = date.toISOString();
+
+  //---------------------------------------------------------- be a volunteer
+
   return (
     <div className="">
       {/* banner */}
@@ -53,11 +55,7 @@ const Details = () => {
             floated={false}
             className="m-0  shrink-0 rounded-r-none"
           >
-            <img
-              src={data.thumbnail}
-              alt="card-image"
-              className=" w-full "
-            />
+            <img src={data.thumbnail} alt="card-image" className=" w-full " />
           </CardHeader>
           <CardBody className=" w-full">
             <CardFooter className="flex  justify-between">
@@ -132,6 +130,7 @@ const Details = () => {
             >
               <button className="mb-10 btn">Be a Volunteer</button>
             </Link>
+            {/* ------------------------------------------------------------------------ */}
           </CardBody>
         </Card>
       </div>

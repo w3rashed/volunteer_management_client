@@ -185,7 +185,11 @@ const UpdatePost = () => {
               label="Thumbnail"
             />
           </div>
-          <input className="btn" type="submit" value="Update Post" />
+          <input
+            className="btn w-full mt-6"
+            type="submit"
+            value="Update Post"
+          />
         </form>
       </div>
     </div>

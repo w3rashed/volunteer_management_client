@@ -10,6 +10,7 @@ import {
   FaRegEye,
   FaRegEyeSlash,
 } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { signInUser, googleLogIn, githubLogin, setLoading } =
@@ -75,6 +76,9 @@ const Login = () => {
 
   return (
     <div className="flex flex-col-reverse lg:flex-row w-3/4 mx-auto my-8 container">
+      <Helmet>
+        <title>Login_EngageEase</title>
+      </Helmet>
       <div
         className="hero min-h-screen rounded-xl"
         style={{

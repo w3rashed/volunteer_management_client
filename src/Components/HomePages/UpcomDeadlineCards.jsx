@@ -25,13 +25,16 @@ const UpcomDeadlineCards = () => {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {lodedData.map((data) => (
           <div key={data._id}>
-            <Card className="mt-8 hover:border-b-8 hover:duration-500 hover:border-[#bf0a30]">
+            <Card
+              color="transparent"
+              className="mt-8 hover:border-b-8 hover:duration-500 hover:border-[#bf0a30]"
+            >
               <CardHeader color="blue-gray" className="relative  h-[300px]">
                 <img src={data.thumbnail} alt="card-image" />
               </CardHeader>
               <CardBody>
                 <div className="flex  justify-between">
-                  <Typography variant="h5" color="blue-gray" className="mb-2">
+                  <Typography variant="h5" className="mb-2 ">
                     {data.title}
                   </Typography>
                   <Typography>
@@ -52,7 +55,7 @@ const UpcomDeadlineCards = () => {
                     </Typography>
                   </div>
                   <Link to={`/details/${data._id}`} className=" btn ">
-                    <button className="border">View Details</button>
+                    <button>View Details</button>
                   </Link>
                 </div>
               </CardBody>
@@ -60,9 +63,11 @@ const UpcomDeadlineCards = () => {
           </div>
         ))}
       </div>
-      <Link to="/need_Volunteer" className="flex justify-center  ">
-        <button className="btn">See all posts</button>
-      </Link>
+      <div className="flex justify-center  mt-10">
+        <Link to="/need_Volunteer">
+          <button className="btn">See all posts</button>
+        </Link>
+      </div>
     </div>
   );
 };

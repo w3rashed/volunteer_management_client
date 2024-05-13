@@ -10,6 +10,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider_&_Firebase/AuthProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { googleLogIn, githubLogin, createUser, updateUser, setLoading } =
@@ -74,6 +75,9 @@ const Register = () => {
 
   return (
     <div className=" w-3/4 mx-auto my-8 gap-6">
+      <Helmet>
+        <title>Register_EngageEase</title>
+      </Helmet>
       <div className=" basis-[50%]">
         <div>
           <h3 className="text-[#006c70] text-lg font-semibold">Register</h3>

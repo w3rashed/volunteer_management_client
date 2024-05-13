@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Input } from "@material-tailwind/react";
 import { BsCalendar2Date } from "react-icons/bs";
+import { Helmet } from "react-helmet";
 
 const AddPost = () => {
   const { user } = useContext(AuthContext);
@@ -59,6 +60,9 @@ const AddPost = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Add post_EngageEase</title>
+      </Helmet>
       <div>
         <form onSubmit={handleAddPost} className="grid gap-4">
           <div className="grid gap-6 grid-cols-1 md:grid-cols-2">

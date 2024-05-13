@@ -7,6 +7,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import BevolunteerRow from "./BevolunteerRow";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const MyPost = () => {
   const { setLoading, user } = useContext(AuthContext);
@@ -128,6 +129,9 @@ const MyPost = () => {
   console.log(beVolunteer);
   return (
     <div>
+      <Helmet>
+        <title>My post_EngageEase</title>
+      </Helmet>
       <Tabs>
         <TabList>
           <Tab>My posts</Tab>

@@ -16,6 +16,7 @@ import {
 import { Input } from "@material-tailwind/react";
 import { IoSearchOutline } from "react-icons/io5";
 import NeedVolunteerTableRow from "./NeedVolunteerTableRow";
+import { Helmet } from "react-helmet";
 
 const NeedVolunteer = () => {
   const { setLoading } = useContext(AuthContext);
@@ -48,6 +49,7 @@ const NeedVolunteer = () => {
     "Location",
     "Deadline",
     "No. of volunteer needed",
+    "",
   ];
 
   // search function
@@ -68,11 +70,14 @@ const NeedVolunteer = () => {
         setLoading(true);
         console.log(error);
       });
-  }, [search]);
+  }, [search, setLoading]);
   console.log(search);
 
   return (
     <div>
+      <Helmet>
+        <title>Need volunteer_EngageEase</title>
+      </Helmet>
       <h2 className="text-center">Need Volunteer Posts:{lodedData?.length}</h2>
       <div>
         <Tabs>

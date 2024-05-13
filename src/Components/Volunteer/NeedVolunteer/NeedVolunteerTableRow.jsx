@@ -1,4 +1,5 @@
 import { Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const NeedVolunteerTableRow = ({ data, idx }) => {
   const date = new Date(data.deadline);
@@ -49,6 +50,17 @@ const NeedVolunteerTableRow = ({ data, idx }) => {
           className="font-normal ml-[30%]"
         >
           {volunteersNeeded}
+        </Typography>
+      </td>
+      <td className="p-4">
+        <Typography
+          variant="small"
+          color="blue-gray"
+          className="font-normal ml-[30%]"
+        >
+          <Link to={`/details/${data._id}`} className=" btn ">
+            <button className="border">View Details</button>
+          </Link>
         </Typography>
       </td>
     </tr>
