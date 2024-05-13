@@ -13,11 +13,11 @@ const BevolunteerRow = ({ data, idx, handleCancle }) => {
       <td>
         <button
           onClick={() => {
-            handleCancle(data._id);
+            handleCancle(data._id, data.postId);
           }}
           className="btn"
         >
-          Cancle
+          Cancel
         </button>
       </td>
     </tr>

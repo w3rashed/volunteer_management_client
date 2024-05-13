@@ -24,7 +24,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/add_post",
-        element: <AddPost></AddPost>,
+        element: (
+          <PrivetRoute>
+            <AddPost></AddPost>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/need_Volunteer",
@@ -32,7 +36,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <Details></Details>,
+        element: (
+          <PrivetRoute>
+            <Details></Details>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/details/${params.id}`),
       },

@@ -7,6 +7,7 @@ import {
   Typography,
   Avatar,
   Tooltip,
+  Button,
 } from "@material-tailwind/react";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider_&_Firebase/AuthProvider";
@@ -45,22 +46,21 @@ const Details = () => {
           </div>
         </div>
       </div>
-      <div>
-        <Card className=" overflow-hidden">
+      <div className="flex justify-center">
+        <Card className="w-full flex-col  lg:flex-row ">
           <CardHeader
-            floated={false}
             shadow={false}
-            color="transparent"
-            className="m-0 rounded-none"
+            floated={false}
+            className="m-0  shrink-0 rounded-r-none"
           >
             <img
               src={data.thumbnail}
-              alt="ui/ux review check"
-              className="w-full max-h-[24rem]"
+              alt="card-image"
+              className=" w-full "
             />
           </CardHeader>
-          <CardBody>
-            <CardFooter className="flex items-center justify-between">
+          <CardBody className=" w-full">
+            <CardFooter className="flex  justify-between">
               <div className="flex items-center -space-x-3">
                 <div className="flex gap-3 ">
                   <Tooltip content={data.name}>
@@ -126,14 +126,13 @@ const Details = () => {
             <Typography variant="" color="gray" className="mt-3 font-normal">
               {data.description}
             </Typography>
+            <Link
+              to={`/be_volunteer/${data._id}`}
+              className="flex justify-center"
+            >
+              <button className="mb-10 btn">Be a Volunteer</button>
+            </Link>
           </CardBody>
-
-          <Link
-            to={`/be_volunteer/${data._id}`}
-            className="flex justify-center"
-          >
-            <button className="mb-10 btn">Be a Volunteer</button>
-          </Link>
         </Card>
       </div>
     </div>

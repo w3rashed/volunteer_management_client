@@ -74,7 +74,7 @@ const MyPost = () => {
       }
     }
   };
-  const handleCancle = async (id) => {
+  const handleCancle = async (id, postId) => {
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -89,7 +89,7 @@ const MyPost = () => {
     if (result.isConfirmed) {
       try {
         const { data } = await axios.delete(
-          `http://localhost:5000/be_volunteer/${id}`
+          `http://localhost:5000/be_volunteer/${id}/`
         );
         // update needed volunteer
 
@@ -128,7 +128,6 @@ const MyPost = () => {
   console.log(beVolunteer, "kfdlsffffffffffffffffffffffff");
   return (
     <div>
-      data:{lodedData.length}
       <Tabs>
         <TabList>
           <Tab>My posts</Tab>
