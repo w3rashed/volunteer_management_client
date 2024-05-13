@@ -16,15 +16,16 @@ import {
 import { Input } from "@material-tailwind/react";
 import { IoSearchOutline } from "react-icons/io5";
 import NeedVolunteerTableRow from "./NeedVolunteerTableRow";
-import { set } from "firebase/database";
 
 const NeedVolunteer = () => {
   const { setLoading } = useContext(AuthContext);
   const [lodedData, setLodedData] = useState([]);
   const [search, setSearch] = useState("");
+
+  const url = "http://localhost:5000/all_volunteer_post";
   useEffect(() => {
     axios
-      .get("http://localhost:5000/volunteer_post")
+      .get(url)
       .then((res) => {
         //   console.log(res.data);
         setLoading(false);
@@ -34,7 +35,7 @@ const NeedVolunteer = () => {
         setLoading(true);
         console.log(error);
       });
-  }, []);
+  }, [url, setLoading]);
   console.log(lodedData);
 
   // ---------------------------------------------------------------------
@@ -54,7 +55,7 @@ const NeedVolunteer = () => {
   };
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/volunteer_post?title=${search}`)
+      .get(`http://localhost:5000/all_volunteer_post?title=${search}`)
       .then((res) => {
         //   console.log(res.data);
         setLoading(false);

@@ -21,13 +21,17 @@ const BeAVolunteer = () => {
     const form = e.target;
     const suggestions = form.suggestions.value;
     const status = form.status.value;
-    const userName = user.displayName;
-    const userEmail = user.email;
+    const name = user.displayName;
+    const email = user.email;
+    const title = form.title.value;
+    const deadline = form.deadline.value;
     const beAVolunteer = {
       suggestions,
+      deadline,
+      title,
       status,
-      userName,
-      userEmail,
+      name,
+      email,
       postId: data._id,
     };
     console.log(beAVolunteer);

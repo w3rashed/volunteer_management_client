@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 import app from "./Firebase.config";
 import { GithubAuthProvider } from "firebase/auth/cordova";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const googleProvier = new GoogleAuthProvider();
@@ -55,7 +56,27 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
       setUser(currentuser);
+      const userEmail = currentuser?.email || user?.email;
+      const loggedUser = { email: userEmail };
       setLoading(false);
+      //   if user axists then issue a token
+      if (currentuser) {
+        axios
+          .post("http://localhost:5000/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log("token response", res.data);
+          });
+      } else {
+        axios
+          .post("http://localhost:5000/logout", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
     return unsubscribe;
   }, []);
@@ -65,7 +86,6 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signOut(auth);
   };
-
 
   // send data
   const authInfo = {
@@ -78,7 +98,7 @@ const AuthProvider = ({ children }) => {
     user,
     loading,
     setLoading,
-    logOut
+    logOut,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

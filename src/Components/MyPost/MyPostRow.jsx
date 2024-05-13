@@ -3,7 +3,7 @@ import { RiDeleteBack2Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 const MyPostRow = ({ data, idx, hadleDeletePost }) => {
-  console.log(data);
+  // console.log(data);
   const date = new Date(data.deadline);
   date.setDate(date.getDate() + 1);
   const updatedDateString = date.toISOString();
