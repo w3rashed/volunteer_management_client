@@ -23,15 +23,18 @@ const BeAVolunteer = () => {
     const status = form.status.value;
     const userName = user.displayName;
     const userEmail = user.email;
-    const suggest = {
+    const beAVolunteer = {
       suggestions,
       status,
       userName,
       userEmail,
+      postId: data._id,
     };
-    console.log(suggest);
+    console.log(beAVolunteer);
+
+    // update needed volunteer
     axios
-      .patch(`http://localhost:5000/volunteer_post/${data._id}`, suggest)
+      .patch(`http://localhost:5000/updateChanges/${data._id}`)
       .then((res) => {
         console.log(res);
         if (res.data.modifiedCount > 0) {
@@ -42,6 +45,12 @@ const BeAVolunteer = () => {
       })
       .catch((error) => {
         console.log(error);
+      });
+
+    axios
+      .patch(`http://localhost:5000/be_volunteer`, beAVolunteer)
+      .then((res) => {
+        console.log(res.data);
       });
   };
 

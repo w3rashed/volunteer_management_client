@@ -16,10 +16,12 @@ import {
 import { Input } from "@material-tailwind/react";
 import { IoSearchOutline } from "react-icons/io5";
 import NeedVolunteerTableRow from "./NeedVolunteerTableRow";
+import { set } from "firebase/database";
 
 const NeedVolunteer = () => {
   const { setLoading } = useContext(AuthContext);
   const [lodedData, setLodedData] = useState([]);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     axios
       .get("http://localhost:5000/volunteer_post")
@@ -47,6 +49,23 @@ const NeedVolunteer = () => {
   ];
 
   // search function
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/volunteer_post?title=${search}`)
+      .then((res) => {
+        //   console.log(res.data);
+        setLoading(false);
+        setLodedData(res.data);
+      })
+      .catch((error) => {
+        setLoading(true);
+        console.log(error);
+      });
+  }, [search]);
+  console.log(search);
 
   return (
     <div>
@@ -58,7 +77,11 @@ const NeedVolunteer = () => {
 
             <div>
               <div className="w-72">
-                <Input label="Search" icon={<IoSearchOutline />} />
+                <Input
+                  onChange={handleSearch}
+                  label="Search"
+                  icon={<IoSearchOutline />}
+                />
               </div>
             </div>
             <TabList>
@@ -75,7 +98,7 @@ const NeedVolunteer = () => {
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {lodedData.map((data) => (
                 <div key={data._id} className="">
-                  <Card  className="mt-6  hover:border-b-8 hover:duration-500 hover:border-[#bf0a30] ">
+                  <Card className="mt-6  hover:border-b-8 hover:duration-500 hover:border-[#bf0a30] ">
                     <CardHeader
                       color="blue-gray"
                       className="relative  h-[300px]"
