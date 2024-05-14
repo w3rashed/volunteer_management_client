@@ -8,6 +8,7 @@ import { Input } from "@material-tailwind/react";
 import { BsCalendar2Date } from "react-icons/bs";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AddPost = () => {
   const { user } = useContext(AuthContext);
@@ -50,8 +51,12 @@ const AddPost = () => {
       .then((res) => {
         console.log(res);
         if (res.data.insertedId) {
-          toast.success("Successfully added post", {
+          Swal.fire({
             position: "top-center",
+            icon: "success",
+            title: "Successfully added post",
+            showConfirmButton: false,
+            timer: 1500,
           });
         }
       })

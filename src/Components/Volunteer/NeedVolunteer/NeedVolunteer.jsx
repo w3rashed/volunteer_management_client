@@ -12,6 +12,8 @@ import {
   CardHeader,
   CardBody,
   Typography,
+  CardFooter,
+  Button,
 } from "@material-tailwind/react";
 import { Input } from "@material-tailwind/react";
 import { IoSearchOutline } from "react-icons/io5";
@@ -59,7 +61,7 @@ const NeedVolunteer = () => {
   useEffect(() => {
     axios
       .get(
-        `https://volunteer-management-server-two.vercel.app/all_volunteer_post?title=${search}`
+        `https://volunteer-management-server-two.vercel.app/all_volunteer_post?search=${search}`
       )
       .then((res) => {
         //   console.log(res.data);
@@ -86,8 +88,10 @@ const NeedVolunteer = () => {
       >
         <div className="hero-overlay bg-opacity-70"></div>
         <div className="hero-content text-center text-white">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl ">Need volunteer Post</h1>
+          <div className="max-w-1/2">
+            <h1 className="mb-5 text-5xl ">
+              Need volunteer Post:{lodedData?.length}
+            </h1>
             <div>
               <Link to="/" className="hover:border-b-2 hover:duration-300">
                 Home
@@ -98,120 +102,136 @@ const NeedVolunteer = () => {
           </div>
         </div>
       </div>
-      <h2 className="text-center">Need Volunteer Posts:{lodedData?.length}</h2>
-      <div>
-        <Tabs>
-          <div className="flex justify-center items-center gap-9 mb-10">
-            {/* search by title */}
 
-            <div>
-              <div className="w-72">
-                <Input
-                  onChange={handleSearch}
-                  label="Search"
-                  icon={<IoSearchOutline />}
-                />
+      <div className="flex justify-center mt-2">
+        <div className="w-72">
+          <Input
+            onChange={handleSearch}
+            label="Search"
+            icon={<IoSearchOutline />}
+          />
+        </div>
+      </div>
+      <div>
+        {lodedData.length === 0 ? (
+          <>
+            <div className="">
+              <Card className="mt-6 text-center">
+                <CardBody>
+                  <Typography variant="h5" color="blue-gray" className="mb-2">
+                    opss!!!
+                  </Typography>
+                  <Typography>No post available</Typography>
+                </CardBody>
+                
+              </Card>
+            </div>
+          </>
+        ) : (
+          <>
+            <Tabs>
+              <div className="flex justify-center items-center gap-9 mb-10">
+                <TabList>
+                  <Tab>
+                    <BsGrid3X3Gap></BsGrid3X3Gap>
+                  </Tab>
+                  <Tab>
+                    <CgLayoutList className="text-2xl"></CgLayoutList>
+                  </Tab>
+                </TabList>
               </div>
-            </div>
-            <TabList>
-              <Tab>
-                <BsGrid3X3Gap></BsGrid3X3Gap>
-              </Tab>
-              <Tab>
-                <CgLayoutList className="text-2xl"></CgLayoutList>
-              </Tab>
-            </TabList>
-          </div>
-          {/* layout card */}
-          <TabPanel>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {lodedData.map((data) => (
-                <div key={data._id} className="">
-                  <Card className="mt-6  hover:border-b-8 hover:duration-500 hover:border-[#bf0a30] ">
-                    <CardHeader
-                      color="blue-gray"
-                      className="relative  h-[300px]"
-                    >
-                      <img src={data.thumbnail} alt="card-image" />
-                    </CardHeader>
-                    <CardBody className="">
-                      <div className="flex  justify-between">
-                        <div>
-                          <Typography
-                            variant="h5"
-                            color="blue-gray"
-                            className="mb-2 "
-                            style={{ width: "200px" }}
-                          >
-                            {data.title}
-                          </Typography>
-                        </div>
-                        <div>
-                          <Typography>
-                            {" "}
-                            <span className="font-semibold">Deadline:</span>
-                            {data.deadline?.split("T")[0]}
-                          </Typography>
-                        </div>
-                      </div>
-                      <div className="flex  justify-between">
-                        <div>
-                          <Typography className="flex">
-                            <span className="font-semibold">Category:</span>{" "}
-                            {data.category}
-                          </Typography>
-                          <Typography className="flex">
-                            <span className="font-semibold">
-                              Volunteer Ndded:
-                            </span>{" "}
-                            {data.volunteersNeeded}
-                          </Typography>
-                        </div>
-                        <Link to={`/details/${data._id}`} className=" btn ">
-                          <button>View Details</button>
-                        </Link>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </TabPanel>
-          {/* layout table */}
-          <TabPanel>
-            <Card className="h-full w-full overflow-scroll">
-              <table className="w-full min-w-max table-auto text-left">
-                <thead>
-                  <tr>
-                    {TABLE_HEAD.map((head) => (
-                      <th
-                        key={head}
-                        className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
-                      >
-                        <Typography
-                          variant="small"
+              {/* layout card */}
+              <TabPanel>
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {lodedData.map((data) => (
+                    <div key={data._id} className="">
+                      <Card className="mt-6  hover:border-b-8 hover:duration-500 hover:border-[#bf0a30] ">
+                        <CardHeader
                           color="blue-gray"
-                          className="font-normal leading-none opacity-70"
+                          className="relative  h-[300px]"
                         >
-                          {head}
-                        </Typography>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {lodedData.map((data, idx) => (
-                    <NeedVolunteerTableRow
-                      key={data._id}
-                      data={data}
-                      idx={idx}
-                    ></NeedVolunteerTableRow>
+                          <img src={data.thumbnail} alt="card-image" />
+                        </CardHeader>
+                        <CardBody className="">
+                          <div className="flex  justify-between">
+                            <div>
+                              <Typography
+                                variant="h5"
+                                color="blue-gray"
+                                className="mb-2 "
+                                style={{ width: "200px" }}
+                              >
+                                {data.title}
+                              </Typography>
+                            </div>
+                            <div>
+                              <Typography>
+                                {" "}
+                                <span className="font-semibold">Deadline:</span>
+                                {data.deadline?.split("T")[0]}
+                              </Typography>
+                            </div>
+                          </div>
+                          <div className="flex  justify-between">
+                            <div>
+                              <Typography className="flex">
+                                <span className="font-semibold">Category:</span>{" "}
+                                {data.category}
+                              </Typography>
+                              <Typography className="flex">
+                                <span className="font-semibold">
+                                  Volunteer Ndded:
+                                </span>{" "}
+                                {data.volunteersNeeded}
+                              </Typography>
+                            </div>
+                            <Link to={`/details/${data._id}`} className=" btn ">
+                              <button>View Details</button>
+                            </Link>
+                          </div>
+                        </CardBody>
+                      </Card>
+                    </div>
                   ))}
-                </tbody>
-              </table>
-            </Card>
-          </TabPanel>
-        </Tabs>
+                </div>
+              </TabPanel>
+              {/* layout table */}
+              <TabPanel>
+                <Card className="h-full w-full overflow-scroll">
+                  <table className="w-full min-w-max table-auto text-left">
+                    <thead>
+                      <tr>
+                        {TABLE_HEAD.map((head) => (
+                          <th
+                            key={head}
+                            className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
+                          >
+                            <Typography
+                              variant="small"
+                              color="blue-gray"
+                              className="font-normal leading-none opacity-70"
+                            >
+                              {head}
+                            </Typography>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {lodedData.map((data, idx) => (
+                        <NeedVolunteerTableRow
+                          key={data._id}
+                          data={data}
+                          idx={idx}
+                        ></NeedVolunteerTableRow>
+                      ))}
+                    </tbody>
+                  </table>
+                </Card>
+              </TabPanel>
+            </Tabs>
+          </>
+        )}
       </div>
     </div>
   );
