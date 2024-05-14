@@ -44,7 +44,8 @@ const AddPost = () => {
     axios
       .post(
         "https://volunteer-management-server-two.vercel.app/volunteer_post",
-        post
+        post,
+        { withCredentials: true }
       )
       .then((res) => {
         console.log(res);

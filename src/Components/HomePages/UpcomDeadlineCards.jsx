@@ -20,7 +20,7 @@ const UpcomDeadlineCards = () => {
     <div className="mt-20">
       <div className="text-center mb-8">
         <h6 className="text-[#bf0a30] font-bold text-xl">Our Posts</h6>
-        <h3 className="font-bold text-3xl">Up Comming Deadline Posts</h3>
+        <h3 className="font-bold text-3xl">Volunteers Need Now</h3>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {lodedData.map((data) => (

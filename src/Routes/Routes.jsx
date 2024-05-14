@@ -64,7 +64,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/update_post/:id",
-        element: <UpdatePost></UpdatePost>,
+        element: (
+          <PrivetRoute>
+            <UpdatePost></UpdatePost>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://volunteer-management-server-two.vercel.app/details/${params.id}`
