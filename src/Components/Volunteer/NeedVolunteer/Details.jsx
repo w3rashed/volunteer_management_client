@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import {
   Card,
   CardHeader,
@@ -19,15 +19,20 @@ import { AuthContext } from "../../../AuthProvider_&_Firebase/AuthProvider";
 //
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from "react-helmet";
 
 const Details = () => {
   const data = useLoaderData();
+  const id = useParams();
+  const [upData, setUpData] = useState();
+  const { user } = useContext(AuthContext);
+  const [startDate, setStartDate] = useState(new Date(data?.deadline));
 
-  console.log(data);
+  console.log(id);
   // console.log(user);
-  const date = new Date(data.deadline);
-  date.setDate(date.getDate() + 1);
-  const updatedDateString = date.toISOString();
+  const date = new Date(data?.deadline);
+  date.setDate(date?.getDate() + 1);
+  const updatedDateString = date?.toISOString();
 
   const handleBeVolunteer = () => {
     Swal.fire({
@@ -38,11 +43,13 @@ const Details = () => {
   };
 
   // -----------------------------------
+  // get all data
+  useEffect(() => {
+    axios
+      .get(`https://volunteer-management-server-two.vercel.app/details/${id}`)
+      .then((res) => setUpData(res.data));
+  }, [id]);
 
-  const { user } = useContext(AuthContext);
-  const [startDate, setStartDate] = useState(new Date(data.deadline));
-
-  useEffect(() => {}, []);
   const handleRequest = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -63,8 +70,12 @@ const Details = () => {
     };
     console.log(beAVolunteer);
     if (data.volunteersNeeded < 1) {
-      return toast.warn("Successfully added request", {
+      return Swal.fire({
         position: "top-center",
+        icon: "warning",
+        title: "Volunteer request already full",
+        showConfirmButton: false,
+        timer: 1500,
       });
     }
 
@@ -77,8 +88,12 @@ const Details = () => {
         console.log(res);
 
         if (res.data.modifiedCount > 0) {
-          toast.success("Successfully added request", {
+          Swal.fire({
             position: "top-center",
+            icon: "success",
+            title: "Successfully added request",
+            showConfirmButton: false,
+            timer: 1500,
           });
         }
       })
@@ -98,6 +113,9 @@ const Details = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>Details_EngageEase</title>
+      </Helmet>
       {/* banner */}
       <div
         className="hero min-h-[calc(100vh-400px)] mb-10"
@@ -199,7 +217,7 @@ const Details = () => {
             <Typography variant="" color="gray" className="mt-3 font-normal">
               {data.description}
             </Typography>
-            {data.volunteersNeeded === 0 ? (
+            {data.volunteersNeeded < 1 ? (
               <>
                 <button onClick={handleBeVolunteer} className="mt-10 btn">
                   Be a Volunteer
@@ -207,7 +225,7 @@ const Details = () => {
               </>
             ) : (
               <button
-                className="btn"
+                className="btn mt-10"
                 onClick={() =>
                   document.getElementById("my_modal_5").showModal()
                 }
@@ -393,6 +411,12 @@ const Details = () => {
                       </button>
                     </div>
                   </form>
+                  <div className="modal-action flex justify-center w-full">
+                    <form method="dialog" className="w-full">
+                      {/* if there is a button in form, it will close the modal */}
+                      <button className="btn w-full">Close</button>
+                    </form>
+                  </div>
                 </div>
               </dialog>
             </div>

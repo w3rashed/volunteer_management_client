@@ -6,9 +6,9 @@ import Swal from "sweetalert2";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import BevolunteerRow from "./BevolunteerRow";
-import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 const MyPost = () => {
   const { setLoading, user } = useContext(AuthContext);
@@ -142,7 +142,9 @@ const MyPost = () => {
         <div className="hero-overlay bg-opacity-70"></div>
         <div className="hero-content text-center text-white">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl ">My Post / requests </h1>
+            <h1 className="mb-5 text-5xl ">
+              My Post:{lodedData.length} / requests{beVolunteer.length}
+            </h1>
             <div>
               <Link
                 to="/add_post"
@@ -168,9 +170,14 @@ const MyPost = () => {
           <div className="overflow-x-auto">
             {lodedData.length === 0 ? (
               <div>
-                <h5 className="font-bold text-2xl text-center">
-                  You havent any posts
-                </h5>
+                <Card className="mt-6 text-center">
+                  <CardBody>
+                    <Typography variant="h5" color="blue-gray" className="mb-2">
+                      opss!!!
+                    </Typography>
+                    <Typography>You havent any posts</Typography>
+                  </CardBody>
+                </Card>
               </div>
             ) : (
               <table className="table table-xs">
@@ -204,9 +211,14 @@ const MyPost = () => {
           <div className="overflow-x-auto">
             {beVolunteer.length === 0 ? (
               <div>
-                <h5 className="font-bold text-2xl text-center">
-                  You Havent any rquests
-                </h5>
+                <Card className="mt-6 text-center">
+                  <CardBody>
+                    <Typography variant="h5" color="blue-gray" className="mb-2">
+                      opss!!!
+                    </Typography>
+                    <Typography>You Havent any rquests</Typography>
+                  </CardBody>
+                </Card>
               </div>
             ) : (
               <table className="table table-xs">

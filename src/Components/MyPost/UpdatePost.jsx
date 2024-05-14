@@ -4,8 +4,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../AuthProvider_&_Firebase/AuthProvider";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { Input } from "@material-tailwind/react";
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const UpdatePost = () => {
   const data = useLoaderData();
@@ -40,8 +42,6 @@ const UpdatePost = () => {
     };
     console.log(update);
 
-    
-
     axios
       .patch(
         `https://volunteer-management-server-two.vercel.app/volunteer_post/${data._id}`,
@@ -50,8 +50,12 @@ const UpdatePost = () => {
       .then((res) => {
         console.log(res);
         if (res.data.modifiedCount > 0) {
-          toast.success("Successfully Update post", {
+          Swal.fire({
             position: "top-center",
+            icon: "success",
+            title: "Successfully Update post",
+            showConfirmButton: false,
+            timer: 1500,
           });
         }
       })
@@ -62,7 +66,33 @@ const UpdatePost = () => {
 
   return (
     <div>
-      <h2>add post</h2>
+      <Helmet>
+        <title>Update_EngageEase</title>
+      </Helmet>
+      {/* banner */}
+      <div
+        className="hero min-h-[calc(100vh-400px)] mb-10"
+        style={{
+          backgroundImage: "url(https://i.ibb.co/TqvLCbh/image.png)",
+        }}
+      >
+        <div className="hero-overlay bg-opacity-70"></div>
+        <div className="hero-content text-center text-white">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl ">Update a post</h1>
+            <div>
+              <Link
+                to="/my_post"
+                className="hover:border-b-2 hover:duration-300"
+              >
+                My posts
+              </Link>{" "}
+              <span>/</span>{" "}
+              <Link className="border-b-2 font-bold">Update post</Link>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div>
         <form onSubmit={handleUpdate}>

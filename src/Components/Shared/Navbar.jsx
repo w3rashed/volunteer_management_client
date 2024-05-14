@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../AuthProvider_&_Firebase/AuthProvider";
+import { Zoom } from "react-awesome-reveal";
 
 const Navbar = () => {
   const [theme, setTheme] = useState("light");
@@ -39,7 +40,7 @@ const Navbar = () => {
 
   // route links
   const links = (
-    <>
+    <Zoom>
       <li>
         <NavLink
           style={({ isActive, isTransitioning }) => {
@@ -115,7 +116,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-    </>
+    </Zoom>
   );
   return (
     <div className=" mx-auto my-4">
