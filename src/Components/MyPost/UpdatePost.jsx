@@ -47,7 +47,7 @@ const UpdatePost = () => {
       .then((res) => {
         console.log(res);
         if (res.data.modifiedCount > 0) {
-          toast.success("Successfully added post", {
+          toast.success("Successfully Update post", {
             position: "top-center",
           });
         }

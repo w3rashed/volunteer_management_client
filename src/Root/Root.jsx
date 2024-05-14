@@ -4,9 +4,12 @@ import Footer from "../Components/Shared/Footer";
 
 const Root = () => {
   return (
-    <div>
-      <Navbar></Navbar>
-      <div className="min-h-[calc(100vh-445px)]">
+    <div className="px-5">
+      <div className="container mx-auto">
+        <Navbar></Navbar>
+      </div>
+
+      <div className="min-h-[calc(100vh-445px)] container mx-auto">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>

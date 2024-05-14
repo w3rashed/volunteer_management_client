@@ -59,7 +59,7 @@ const NeedVolunteerTableRow = ({ data, idx }) => {
           className="font-normal ml-[30%]"
         >
           <Link to={`/details/${data._id}`} className=" btn ">
-            <button className="border">View Details</button>
+            <button>View Details</button>
           </Link>
         </Typography>
       </td>

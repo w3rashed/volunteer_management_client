@@ -4,6 +4,7 @@ import Slider from "./Slider";
 import UpcomDeadlineCards from "./UpcomDeadlineCards";
 import Mission from "./Mission";
 import Sponsor from "./Sponsor";
+import NewSlider from "./NewSlider";
 
 const Home = () => {
   return (
@@ -11,7 +12,8 @@ const Home = () => {
       <Helmet>
         <title>Home_EngageEase</title>
       </Helmet>
-      <Slider></Slider>
+      <NewSlider></NewSlider>
+      {/* <Slider></Slider> */}
       <Mission></Mission>
       <UpcomDeadlineCards></UpcomDeadlineCards>
       <OurVolunteers></OurVolunteers>

@@ -78,6 +78,26 @@ const NeedVolunteer = () => {
       <Helmet>
         <title>Need volunteer_EngageEase</title>
       </Helmet>
+      <div
+        className="hero min-h-[calc(100vh-400px)] mb-10"
+        style={{
+          backgroundImage: "url(https://i.ibb.co/TqvLCbh/image.png)",
+        }}
+      >
+        <div className="hero-overlay bg-opacity-70"></div>
+        <div className="hero-content text-center text-white">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl ">Need volunteer Post</h1>
+            <div>
+              <Link to="/" className="hover:border-b-2 hover:duration-300">
+                Home
+              </Link>{" "}
+              <span>/</span>{" "}
+              <Link className="border-b-2 font-bold">Need Volunteer</Link>
+            </div>
+          </div>
+        </div>
+      </div>
       <h2 className="text-center">Need Volunteer Posts:{lodedData?.length}</h2>
       <div>
         <Tabs>
@@ -148,7 +168,7 @@ const NeedVolunteer = () => {
                           </Typography>
                         </div>
                         <Link to={`/details/${data._id}`} className=" btn ">
-                          <button className="border">View Details</button>
+                          <button>View Details</button>
                         </Link>
                       </div>
                     </CardBody>

@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { Input } from "@material-tailwind/react";
 import { BsCalendar2Date } from "react-icons/bs";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const AddPost = () => {
   const { user } = useContext(AuthContext);
@@ -63,6 +64,26 @@ const AddPost = () => {
       <Helmet>
         <title>Add post_EngageEase</title>
       </Helmet>
+      <div
+        className="hero min-h-[calc(100vh-400px)] mb-10"
+        style={{
+          backgroundImage: "url(https://i.ibb.co/TqvLCbh/image.png)",
+        }}
+      >
+        <div className="hero-overlay bg-opacity-70"></div>
+        <div className="hero-content text-center text-white">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl ">Add A new Post</h1>
+            <div>
+              <Link to="/" className="hover:border-b-2 hover:duration-300">
+                Home
+              </Link>{" "}
+              <span>/</span>{" "}
+              <Link className="border-b-2 font-bold">Add Post</Link>
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
         <form onSubmit={handleAddPost} className="grid gap-4">
           <div className="grid gap-6 grid-cols-1 md:grid-cols-2">

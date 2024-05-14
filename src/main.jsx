@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
       <RouterProvider router={Routes}></RouterProvider>
-      <ToastContainer></ToastContainer>
+      <ToastContainer style={{ zIndex: "1000" }}></ToastContainer>
     </AuthProvider>
   </React.StrictMode>
 );

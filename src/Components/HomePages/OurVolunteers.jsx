@@ -38,7 +38,7 @@ const OurVolunteers = () => {
         <Card
           color="transparent"
           shadow={false}
-          className="w-full max-w-[26rem] border p-5 hover:shadow-lg duration-300"
+          className="w-full  border p-5 hover:shadow-lg duration-300"
         >
           <CardHeader
             color="transparent"
@@ -81,7 +81,7 @@ const OurVolunteers = () => {
         <Card
           color="transparent"
           shadow={false}
-          className="w-full max-w-[26rem] border p-5 hover:shadow-lg duration-300"
+          className="w-full  border p-5 hover:shadow-lg duration-300"
         >
           <CardHeader
             color="transparent"
@@ -122,7 +122,7 @@ const OurVolunteers = () => {
         <Card
           color="transparent"
           shadow={false}
-          className="w-full max-w-[26rem] border p-5 hover:shadow-lg duration-300"
+          className="w-full  border p-5 hover:shadow-lg duration-300"
         >
           <CardHeader
             color="transparent"
@@ -162,7 +162,7 @@ const OurVolunteers = () => {
         <Card
           color="transparent"
           shadow={false}
-          className="w-full max-w-[26rem] border p-5 hover:shadow-lg duration-300"
+          className="w-full  border p-5 hover:shadow-lg duration-300"
         >
           <CardHeader
             color="transparent"
@@ -203,7 +203,7 @@ const OurVolunteers = () => {
         <Card
           color="transparent"
           shadow={false}
-          className="w-full max-w-[26rem] border p-5 hover:shadow-lg duration-300"
+          className="w-full  border p-5 hover:shadow-lg duration-300"
         >
           <CardHeader
             color="transparent"
@@ -245,7 +245,7 @@ const OurVolunteers = () => {
         <Card
           color="transparent"
           shadow={false}
-          className="w-full max-w-[26rem] border p-5 hover:shadow-lg duration-300"
+          className="w-full  border p-5 hover:shadow-lg duration-300"
         >
           <CardHeader
             color="transparent"

@@ -1,4 +1,4 @@
-#[EngageEase](https://volunteer-management-6ebc4.web.app)
+## [EngageEase](https://volunteer-management-6ebc4.web.app)
 
 
 
@@ -9,6 +9,7 @@
 - [React datepicker](https://reactdatepicker.com)
 - [React icons](https://react-icons.github.io/react-icons)
 - [React sweetalert2](https://sweetalert2.github.io)
+- [react-simple-typewriter](https://github.com/awran5/react-simple-typewriter)
 
 
 

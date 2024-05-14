@@ -35,6 +35,11 @@ const BeAVolunteer = () => {
       postId: data._id,
     };
     console.log(beAVolunteer);
+    if (data.volunteersNeeded < 1) {
+      return toast.warn("Successfully added request", {
+        position: "top-center",
+      });
+    }
 
     // update needed volunteer
     axios
@@ -43,6 +48,7 @@ const BeAVolunteer = () => {
       )
       .then((res) => {
         console.log(res);
+
         if (res.data.modifiedCount > 0) {
           toast.success("Successfully added request", {
             position: "top-center",
@@ -61,6 +67,7 @@ const BeAVolunteer = () => {
       .then((res) => {
         console.log(res.data);
       });
+    e.reset();
   };
 
   return (

@@ -8,6 +8,7 @@ import "react-tabs/style/react-tabs.css";
 import BevolunteerRow from "./BevolunteerRow";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 const MyPost = () => {
   const { setLoading, user } = useContext(AuthContext);
@@ -132,6 +133,31 @@ const MyPost = () => {
       <Helmet>
         <title>My post_EngageEase</title>
       </Helmet>
+      <div
+        className="hero min-h-[calc(100vh-400px)] mb-10"
+        style={{
+          backgroundImage: "url(https://i.ibb.co/TqvLCbh/image.png)",
+        }}
+      >
+        <div className="hero-overlay bg-opacity-70"></div>
+        <div className="hero-content text-center text-white">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl ">My Post / requests </h1>
+            <div>
+              <Link
+                to="/add_post"
+                className="hover:border-b-2 hover:duration-300"
+              >
+                Add Post
+              </Link>{" "}
+              <span>/</span>{" "}
+              <Link className="border-b-2 font-bold">
+                My Posts & My requests
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
       <Tabs>
         <TabList>
           <Tab>My posts</Tab>

@@ -9,8 +9,6 @@ import {
   Tooltip,
 } from "@material-tailwind/react";
 
-import "react-datepicker/dist/react-datepicker.css";
-
 const Details = () => {
   const data = useLoaderData();
 
@@ -20,7 +18,7 @@ const Details = () => {
   date.setDate(date.getDate() + 1);
   const updatedDateString = date.toISOString();
 
-  //---------------------------------------------------------- be a volunteer
+ 
 
   return (
     <div className="">
@@ -48,8 +46,11 @@ const Details = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center">
-        <Card className="w-full flex-col  lg:flex-row ">
+      <div className="flex justify-center ">
+        <Card
+          color="transparent"
+          className=" flex-col  lg:flex-row lg:h-[500px]"
+        >
           <CardHeader
             shadow={false}
             floated={false}
@@ -57,7 +58,7 @@ const Details = () => {
           >
             <img src={data.thumbnail} alt="card-image" className=" w-full " />
           </CardHeader>
-          <CardBody className=" w-full">
+          <CardBody className=" w-full ">
             <CardFooter className="flex  justify-between">
               <div className="flex items-center -space-x-3">
                 <div className="flex gap-3 ">
@@ -70,9 +71,7 @@ const Details = () => {
                     />
                   </Tooltip>
                   <div>
-                    <h2 className="font-black  text-2xl text-black ">
-                      {data.name}
-                    </h2>
+                    <h2 className="font-black  text-2xl  ">{data.name}</h2>
                     <h2>{data.email}</h2>
                   </div>
                 </div>
@@ -84,7 +83,7 @@ const Details = () => {
                 {updatedDateString.split("T")[0]}
               </Typography>
             </CardFooter>
-            <Typography variant="h4" color="blue-gray">
+            <Typography variant="h4" color="">
               {data.title}
             </Typography>
             {/* ------------- */}
@@ -124,13 +123,13 @@ const Details = () => {
             <Typography variant="" color="gray" className="mt-3 font-normal">
               {data.description}
             </Typography>
+
             <Link
               to={`/be_volunteer/${data._id}`}
               className="flex justify-center"
             >
               <button className="mb-10 btn">Be a Volunteer</button>
             </Link>
-            {/* ------------------------------------------------------------------------ */}
           </CardBody>
         </Card>
       </div>
