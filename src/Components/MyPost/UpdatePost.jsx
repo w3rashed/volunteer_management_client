@@ -39,6 +39,9 @@ const UpdatePost = () => {
       email,
     };
     console.log(update);
+
+    
+
     axios
       .patch(
         `https://volunteer-management-server-two.vercel.app/volunteer_post/${data._id}`,

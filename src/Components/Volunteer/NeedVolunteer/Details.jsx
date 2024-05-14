@@ -7,7 +7,18 @@ import {
   Typography,
   Avatar,
   Tooltip,
+  Input,
 } from "@material-tailwind/react";
+import Swal from "sweetalert2";
+
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../AuthProvider_&_Firebase/AuthProvider";
+
+//
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Details = () => {
   const data = useLoaderData();
@@ -18,7 +29,72 @@ const Details = () => {
   date.setDate(date.getDate() + 1);
   const updatedDateString = date.toISOString();
 
- 
+  const handleBeVolunteer = () => {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Volunteer Request Already full!",
+    });
+  };
+
+  // -----------------------------------
+
+  const { user } = useContext(AuthContext);
+  const [startDate, setStartDate] = useState(new Date(data.deadline));
+
+  useEffect(() => {}, []);
+  const handleRequest = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const suggestions = form.suggestions.value;
+    const status = form.status.value;
+    const name = user.displayName;
+    const email = user.email;
+    const title = form.title.value;
+    const deadline = form.deadline.value;
+    const beAVolunteer = {
+      suggestions,
+      deadline,
+      title,
+      status,
+      name,
+      email,
+      postId: data._id,
+    };
+    console.log(beAVolunteer);
+    if (data.volunteersNeeded < 1) {
+      return toast.warn("Successfully added request", {
+        position: "top-center",
+      });
+    }
+
+    // update needed volunteer
+    axios
+      .patch(
+        `https://volunteer-management-server-two.vercel.app/updateChanges/${data._id}`
+      )
+      .then((res) => {
+        console.log(res);
+
+        if (res.data.modifiedCount > 0) {
+          toast.success("Successfully added request", {
+            position: "top-center",
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .patch(
+        `https://volunteer-management-server-two.vercel.app/be_volunteer`,
+        beAVolunteer
+      )
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
 
   return (
     <div className="">
@@ -123,13 +199,203 @@ const Details = () => {
             <Typography variant="" color="gray" className="mt-3 font-normal">
               {data.description}
             </Typography>
+            {data.volunteersNeeded === 0 ? (
+              <>
+                <button onClick={handleBeVolunteer} className="mt-10 btn">
+                  Be a Volunteer
+                </button>
+              </>
+            ) : (
+              <button
+                className="btn"
+                onClick={() =>
+                  document.getElementById("my_modal_5").showModal()
+                }
+              >
+                Be a Volunteer
+              </button>
+            )}
+            {/* ----------------------------------------------------------- */}
 
-            <Link
-              to={`/be_volunteer/${data._id}`}
-              className="flex justify-center"
-            >
-              <button className="mb-10 btn">Be a Volunteer</button>
-            </Link>
+            <div>
+              {/* Open the modal using document.getElementById('ID').showModal() method */}
+
+              <dialog
+                id="my_modal_5"
+                className="modal modal-bottom sm:modal-middle "
+              >
+                <div className="modal-box ">
+                  <form onSubmit={handleRequest}>
+                    <div className="grid gap-6 grid-cols-1 md:grid-cols-2 overflow-hidden">
+                      <div className="grid gap-4">
+                        <Input
+                          type="text"
+                          name="name"
+                          className="grow "
+                          label="User Name"
+                          defaultValue={user?.displayName}
+                          readOnly
+                        />
+                        <Input
+                          type="email"
+                          name="email"
+                          className="grow"
+                          label="User Email"
+                          defaultValue={user?.email}
+                          readOnly
+                        />
+                        <Input
+                          type="text"
+                          name="title"
+                          className=" py-[20px]"
+                          defaultValue={data.title}
+                          label="Enter your post title"
+                          readOnly
+                        />
+                        <Input
+                          type="text"
+                          name="location"
+                          className="grow"
+                          label="Enter your location"
+                          defaultValue={data.location}
+                          readOnly
+                        />
+                        <Input
+                          type="number"
+                          name="volunteersNeeded"
+                          className="grow"
+                          label="Enter No. of volunteers needed"
+                          defaultValue={data.volunteersNeeded}
+                          readOnly
+                        />
+                        <Input
+                          type="text"
+                          name="photo_url"
+                          defaultValue={data.thumbnail}
+                          className="input input-bordered w-full  "
+                          label="Thumbnail"
+                          readOnly
+                        />
+                      </div>
+                      {/* right */}
+                      <div className=" flex flex-col gap-3">
+                        <div className="-mt-4">
+                          <div className="label">
+                            <span className="label-text">Deadline</span>
+                          </div>
+                          <div className="input input-bordered w-full h-10 flex items-center">
+                            <DatePicker
+                              showIcon
+                              disabled
+                              name="deadline"
+                              selected={startDate}
+                              onChange={(date) => setStartDate(date)}
+                              icon={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="1em"
+                                  height="1em"
+                                  viewBox="0 0 48 48"
+                                >
+                                  <mask id="ipSApplication0">
+                                    <g
+                                      fill="none"
+                                      stroke="#fff"
+                                      strokeLinejoin="round"
+                                      strokeWidth="4"
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        d="M40.04 22v20h-32V22"
+                                      ></path>
+                                      <path
+                                        fill="#fff"
+                                        d="M5.842 13.777C4.312 17.737 7.263 22 11.51 22c3.314 0 6.019-2.686 6.019-6a6 6 0 0 0 6 6h1.018a6 6 0 0 0 6-6c0 3.314 2.706 6 6.02 6c4.248 0 7.201-4.265 5.67-8.228L39.234 6H8.845l-3.003 7.777Z"
+                                      ></path>
+                                    </g>
+                                  </mask>
+                                  <path
+                                    fill="currentColor"
+                                    d="M0 0h48v48H0z"
+                                    mask="url(#ipSApplication0)"
+                                  ></path>
+                                </svg>
+                              }
+                            />
+                          </div>
+                        </div>
+                        <label className="form-control w-full -mt-4 ">
+                          <div className="label">
+                            <span className="label-text">Category</span>
+                          </div>
+
+                          <select
+                            name="category"
+                            defaultValue={data.category}
+                            disabled
+                            className="input input-bordered h-10 w-full  "
+                          >
+                            <option value="">Category</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Education">Education</option>
+                            <option value="Social service">
+                              Social service
+                            </option>
+                            <option value="Animal welfare">
+                              Animal welfare
+                            </option>
+                          </select>
+                        </label>
+                        <label className="form-control flex-1">
+                          <div className="label">
+                            <span className="label-text">Description</span>
+                          </div>
+                          <textarea
+                            disabled
+                            className="textarea textarea-bordered h-full "
+                            placeholder="Bio"
+                            defaultValue={data.description}
+                          ></textarea>
+                        </label>
+                      </div>
+                    </div>
+                    <div className="">
+                      <p className="text-center my-6">
+                        suggestions and Request
+                      </p>
+                      <div className="flex gap-6 mb-6">
+                        {" "}
+                        <Input
+                          type="text"
+                          name="suggestions"
+                          className="input input-bordered w-full  "
+                          label="suggestions"
+                        />
+                        <Input
+                          type="text"
+                          name="status"
+                          defaultValue="Requested"
+                          className="input input-bordered w-full  "
+                          label="Status"
+                          readOnly
+                        />
+                      </div>
+                    </div>
+                    <div className="modal-action">
+                      <button
+                        className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#8A35DF] rounded-md w-full mt-5 hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                        onClick={() => {
+                          const modal = document.getElementById("my_modal_5");
+                          modal.close();
+                        }}
+                      >
+                        Request
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </dialog>
+            </div>
           </CardBody>
         </Card>
       </div>

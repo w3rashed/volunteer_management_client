@@ -12,8 +12,8 @@ import { AuthContext } from "../../../AuthProvider_&_Firebase/AuthProvider";
 const BeAVolunteer = () => {
   const data = useLoaderData();
   const id = useParams();
-  const [noOfVolunteer, setNoOfVolunteer] = useState(data.volunteersNeeded);
-  console.log(noOfVolunteer);
+  
+  
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date(data.deadline));
   console.log(id);
@@ -39,7 +39,7 @@ const BeAVolunteer = () => {
       postId: data._id,
     };
     console.log(beAVolunteer);
-    if (noOfVolunteer < 1) {
+    if (data.volunteersNeeded < 1) {
       return toast.warn("Successfully added request", {
         position: "top-center",
       });
@@ -71,11 +71,7 @@ const BeAVolunteer = () => {
       .then((res) => {
         console.log(res.data);
       });
-    // get volunteersNeeded
-    axios
-      .get(`https://volunteer-management-server-two.vercel.app/details/${id}`)
-      .then((res) => setNoOfVolunteer(res.data.volunteersNeeded));
-    e.reset();
+    
   };
 
   return (
@@ -121,7 +117,7 @@ const BeAVolunteer = () => {
                 name="volunteersNeeded"
                 className="grow"
                 label="Enter No. of volunteers needed"
-                defaultValue={noOfVolunteer}
+                defaultValue={data.volunteersNeeded}
                 readOnly
               />
               <Input

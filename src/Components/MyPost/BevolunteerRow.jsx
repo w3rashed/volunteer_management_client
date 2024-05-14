@@ -1,5 +1,4 @@
 const BevolunteerRow = ({ data, idx, handleCancle }) => {
-  console.log(data);
   const date = new Date(data.deadline);
   date.setDate(date.getDate() + 1);
   const updatedDateString = date.toISOString();

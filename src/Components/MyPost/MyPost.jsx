@@ -91,7 +91,7 @@ const MyPost = () => {
     if (result.isConfirmed) {
       try {
         const { data } = await axios.delete(
-          `https://volunteer-management-server-two.vercel.app/be_volunteer/${id}/`
+          `https://volunteer-management-server-two.vercel.app/be_volunteer/${id}`
         );
         // update needed volunteer
 
