@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../AuthProvider_&_Firebase/AuthProvider";
 import { Zoom } from "react-awesome-reveal";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [theme, setTheme] = useState("light");
@@ -32,8 +33,13 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut();
     console.log("log out succed");
-    toast.success("Successfully loged out!", {
+
+    Swal.fire({
       position: "top-center",
+      icon: "success",
+      title: "Successfully loged out!",
+      showConfirmButton: false,
+      timer: 1500,
     });
     navigate(location?.state ? location.state : "/");
   };
@@ -48,7 +54,7 @@ const Navbar = () => {
               fontWeight: isActive ? "bold" : "",
               backgroundColor: isActive ? "transparent" : "",
               // border: isActive ? "1px solid #23BE0A" : "",
-              color: isActive ? "#f7931e" : "",
+              color: isActive ? "#2ECC71" : "",
               viewTransitionName: isTransitioning ? "slide" : "",
             };
           }}
@@ -65,7 +71,7 @@ const Navbar = () => {
               fontWeight: isActive ? "bold" : "",
               backgroundColor: isActive ? "transparent" : "",
               // border: isActive ? "1px solid #23BE0A" : "",
-              color: isActive ? "#f7931e" : "",
+              color: isActive ? "#2ECC71" : "",
               viewTransitionName: isTransitioning ? "slide" : "",
             };
           }}
@@ -74,13 +80,14 @@ const Navbar = () => {
           Need Volunteer
         </NavLink>
       </li>
-      <div className="dropdown">
+
+      <div className="dropdown z-1000 ">
         <div tabIndex={0} role="button" className="  m-1">
           My Profile
         </div>
         <ul
           tabIndex={0}
-          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          className="dropdown-content  menu p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li>
             <NavLink
@@ -89,7 +96,7 @@ const Navbar = () => {
                   fontWeight: isActive ? "bold" : "",
                   backgroundColor: isActive ? "transparent" : "",
                   // border: isActive ? "1px solid #23BE0A" : "",
-                  color: isActive ? "#f7931e" : "",
+                  color: isActive ? "#2ECC71" : "",
                   viewTransitionName: isTransitioning ? "slide" : "",
                 };
               }}
@@ -105,7 +112,7 @@ const Navbar = () => {
                   fontWeight: isActive ? "bold" : "",
                   backgroundColor: isActive ? "transparent" : "",
                   // border: isActive ? "1px solid #23BE0A" : "",
-                  color: isActive ? "#f7931e" : "",
+                  color: isActive ? "#2ECC71" : "",
                   viewTransitionName: isTransitioning ? "slide" : "",
                 };
               }}
@@ -147,10 +154,17 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">EngageEase</a>
+          <div className="flex items-center">
+            <img
+              src="https://i.ibb.co/7G9wvG3/image-removebg-preview.png"
+              className="size-12"
+              alt=""
+            />
+            <a className="font-bold text-xl">EngageEase</a>
+          </div>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 items-center">
+        <div className="navbar-center hidden lg:flex relative ">
+          <ul className="menu menu-horizontal px-1 items-center ">
             {/* links */}
             {links}
           </ul>

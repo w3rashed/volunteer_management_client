@@ -138,12 +138,14 @@ const Details = () => {
             <div>
               <Link
                 to="/need_Volunteer"
-                className="hover:border-b-2 hover:duration-300"
+                className="hover:border-b-2 hover:duration-300 border-[#2ECC71]"
               >
                 Need Volunteer
               </Link>{" "}
               <span>/</span>{" "}
-              <Link className="border-b-2 font-bold">Details</Link>
+              <Link className="border-b-2 font-bold text-[#2ECC71] border-[#2ECC71]">
+                Details
+              </Link>
             </div>
           </div>
         </div>
@@ -227,13 +229,16 @@ const Details = () => {
             </Typography>
             {upData < 1 ? (
               <>
-                <button onClick={handleBeVolunteer} className="mt-10 btn">
+                <button
+                  onClick={handleBeVolunteer}
+                  className="mt-10 btn bg-[#2ECC71] text-white hover:text-[#2ECC71] hover:bg-transparent hover:border-[#2ECC71] duration-500"
+                >
                   Be a Volunteer
                 </button>
               </>
             ) : (
               <button
-                className="btn mt-10"
+                className="btn mt-10 bg-[#2ECC71] text-white hover:text-[#2ECC71] hover:bg-transparent hover:border-[#2ECC71] duration-500"
                 onClick={() =>
                   document.getElementById("my_modal_5").showModal()
                 }
@@ -409,7 +414,7 @@ const Details = () => {
                     </div>
                     <div className="modal-action">
                       <button
-                        className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-[#8A35DF] rounded-md w-full mt-5 hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+                        className="px-8 py-2.5 w-full mt-5 leading-5 border rounded-md   bg-[#2ECC71] text-white hover:text-[#2ECC71] hover:bg-transparent hover:border-[#2ECC71] duration-500"
                         onClick={() => {
                           const modal = document.getElementById("my_modal_5");
                           modal.close();

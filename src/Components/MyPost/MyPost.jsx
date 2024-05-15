@@ -148,12 +148,12 @@ const MyPost = () => {
             <div>
               <Link
                 to="/add_post"
-                className="hover:border-b-2 hover:duration-300"
+                className="hover:border-b-2 hover:duration-300 border-[#2ECC71]"
               >
                 Add Post
               </Link>{" "}
               <span>/</span>{" "}
-              <Link className="border-b-2 font-bold">
+              <Link className="border-b-2 font-bold border-[#2ECC71] text-[#2ECC71]">
                 My Posts & My requests
               </Link>
             </div>

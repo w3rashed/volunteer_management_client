@@ -14,6 +14,7 @@ import { Helmet } from "react-helmet";
 
 // -----------------------------------
 import { CardHeader, Typography } from "@material-tailwind/react";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { signInUser, googleLogIn, githubLogin, setLoading } =
@@ -42,8 +43,12 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         navigate(location?.state ? location.state : "/");
-        toast.success("Successfully signed in", {
+        Swal.fire({
           position: "top-center",
+          icon: "success",
+          title: "successfully signed in",
+          showConfirmButton: false,
+          timer: 1500,
         });
         // setLoading(true);
         e.target.reset();
@@ -51,8 +56,13 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
         setError(error.message.split(":")[1]);
-        toast.error(`Email or password is not valid`, {
+
+        Swal.warn({
           position: "top-center",
+          icon: "success",
+          title: "Email or password is not valid",
+          showConfirmButton: false,
+          timer: 1500,
         });
       });
   };
@@ -61,9 +71,14 @@ const Login = () => {
   const handlegoogleLogIn = () => {
     googleLogIn().then(() => {
       navigate(location?.state ? location.state : "/");
-      toast.success("successfully google signed in", {
+      Swal.fire({
         position: "top-center",
+        icon: "success",
+        title: "successfully google signed in",
+        showConfirmButton: false,
+        timer: 1500,
       });
+
       // setLoading(true);
     });
   };
@@ -159,30 +174,30 @@ const Login = () => {
                       Login
                     </button>
                   </div>
-                  <div className="mt-6">
-                    <h2 className="text-center font-bold ">Or Sign Up Using</h2>
-                    <button
-                      onClick={handlegoogleLogIn}
-                      className="btn w-full mt-4"
-                    >
-                      <FaGoogle></FaGoogle>
-                      Login With Google
-                    </button>
-                  </div>
-                  <div>
-                    <p className="text-center mt-4">
-                      Dont you have an account?{" "}
-                      <Link
-                        to="/register"
-                        // state={{ from: location.state.from }}
-                        replace
-                        className="text-[#cf2e2e] font-semibold hover:border-b-2 border-[#ff5a5f] duration-100"
-                      >
-                        Register
-                      </Link>
-                    </p>
-                  </div>
                 </form>
+                <div className="mt-6">
+                  <h2 className="text-center font-bold ">Or Sign Up Using</h2>
+                  <button
+                    onClick={handlegoogleLogIn}
+                    className="btn w-full mt-4"
+                  >
+                    <FaGoogle></FaGoogle>
+                    Login With Google
+                  </button>
+                </div>
+                <div>
+                  <p className="text-center mt-4">
+                    Dont you have an account?{" "}
+                    <Link
+                      to="/register"
+                      // state={{ from: location.state.from }}
+                      replace
+                      className="text-[#cf2e2e] font-semibold hover:border-b-2 border-[#ff5a5f] duration-100"
+                    >
+                      Register
+                    </Link>
+                  </p>
+                </div>
               </div>
             </div>
           </div>

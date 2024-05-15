@@ -24,17 +24,25 @@ const Footer = () => {
         <footer className="relative w-full py-10">
           <div className="mx-auto w-full max-w-7xl px-8">
             <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-              <Typography variant="h5" className="mb-6">
-                <Typewriter
-                  words={["EngageEase"]}
-                  loop={99999900}
-                  cursor
-                  cursorStyle="_"
-                  typeSpeed={100}
-                  deleteSpeed={80}
-                  delaySpeed={1000}
+              <div className="flex ">
+                <img
+                  src="https://i.ibb.co/7G9wvG3/image-removebg-preview.png"
+                  className="size-12"
+                  alt=""
                 />
-              </Typography>
+                <Typography variant="h5" className="mt-2">
+                  <Typewriter
+                    words={["EngageEase"]}
+                    loop={99999900}
+                    cursor
+                    cursorStyle="_"
+                    typeSpeed={100}
+                    deleteSpeed={80}
+                    delaySpeed={1000}
+                  />
+                </Typography>
+              </div>
+
               <div className="grid grid-cols-3 justify-between gap-4">
                 {LINKS.map(({ title, items }) => (
                   <ul key={title}>

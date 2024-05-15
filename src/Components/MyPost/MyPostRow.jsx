@@ -17,11 +17,14 @@ const MyPostRow = ({ data, idx, hadleDeletePost }) => {
       <td>{updatedDateString.split("T")[0]}</td>
       <td className="flex gap-2">
         <Link to={`/update_post/${data._id}`}>
-          <button className="btn">
+          <button className="btn bg-[#2ECC71] text-white hover:text-[#2ECC71] hover:bg-transparent hover:border-[#2ECC71] duration-500">
             <FaEdit></FaEdit>
           </button>
         </Link>
-        <button onClick={() => hadleDeletePost(data._id)} className="btn">
+        <button
+          onClick={() => hadleDeletePost(data._id)}
+          className="btn bg-[red] text-white hover:text-[red] hover:bg-transparent hover:border-[red] duration-500"
+        >
           <RiDeleteBack2Line></RiDeleteBack2Line>
         </button>
       </td>

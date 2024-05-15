@@ -14,7 +14,7 @@ const BevolunteerRow = ({ data, idx, handleCancle }) => {
           onClick={() => {
             handleCancle(data._id, data.postId);
           }}
-          className="btn"
+          className="btn bg-[red] text-white hover:text-[red] hover:bg-transparent hover:border-[red] duration-500"
         >
           Cancel
         </button>

@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet";
 import { CardHeader, Typography } from "@material-tailwind/react";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { googleLogIn, githubLogin, createUser, updateUser, setLoading } =
@@ -58,8 +59,12 @@ const Register = () => {
   // handle google log in
   const handlegoogleLogIn = () => {
     googleLogIn().then(() => {
-      toast.success("successfully Google Registered ", {
+      Swal.fire({
         position: "top-center",
+        icon: "success",
+        title: "successfully google signed in",
+        showConfirmButton: false,
+        timer: 1500,
       });
       navigate(location?.state ? location.state : "/");
     });
@@ -89,10 +94,17 @@ const Register = () => {
             }}
           >
             <div className="hero-overlay bg-opacity-60 rounded-xl"></div>
-            <div className=" text-white -mt-96">
-              <div className="max-w-md">
+            <div className="  -mt-96">
+              <div className="max-w-md bg-white bg-opacity-80 p-3 rounded-xl">
                 <h3 className="mb-5 text-5xl font-bold">Welcome to family</h3>
-                <h1 className="mb-5 text-xl font-bold">EngageEase</h1>
+                <div className="flex items-center">
+                  <img
+                    src="https://i.ibb.co/7G9wvG3/image-removebg-preview.png"
+                    className="size-12"
+                    alt=""
+                  />
+                  <a className="font-bold text-xl">EngageEase</a>
+                </div>
               </div>
             </div>
           </div>

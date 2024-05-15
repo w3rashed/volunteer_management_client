@@ -81,11 +81,16 @@ const AddPost = () => {
           <div className="max-w-md">
             <h1 className="mb-5 text-5xl ">Add A new Post</h1>
             <div>
-              <Link to="/" className="hover:border-b-2 hover:duration-300">
+              <Link
+                to="/"
+                className="hover:border-b-2 hover:duration-300 border-[#2ECC71]"
+              >
                 Home
               </Link>{" "}
               <span>/</span>{" "}
-              <Link className="border-b-2 font-bold">Add Post</Link>
+              <Link className="border-b-2 font-bold border-[#2ECC71] text-[#2ECC71]">
+                Add Post
+              </Link>
             </div>
           </div>
         </div>
@@ -178,7 +183,11 @@ const AddPost = () => {
             label="Thumbnail"
           />
 
-          <input className="btn" type="submit" value="Post" />
+          <input
+            className="btn bg-[#2ECC71] text-white hover:text-[#2ECC71] hover:bg-transparent hover:border-[#2ECC71] duration-500"
+            type="submit"
+            value="Post"
+          />
         </form>
       </div>
     </div>

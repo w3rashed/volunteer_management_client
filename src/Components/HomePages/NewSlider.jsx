@@ -40,7 +40,7 @@ const NewSlider = () => {
                   <div className="hero-content text-white lg:w-[50%]">
                     <div className="">
                       <h1 className="mb-5 text-5xl font-bold">
-                        <h2 className="text-6xl mb-4">
+                        <h2 className="text-6xl mb-4 text-[#2ECC71]">
                           <Typewriter
                             words={["PALESTINE EMERGENCY"]}
                             loop={99999900}
@@ -72,7 +72,7 @@ const NewSlider = () => {
                   <div className="hero-overlay bg-opacity-60"></div>
                   <div className="hero-content text-white lg:w-[50%]">
                     <div className="">
-                      <h2 className="text-6xl mb-4">
+                      <h2 className="text-6xl mb-4 text-[#2ECC71]">
                         <Typewriter
                           words={["Together, We Can Transform the World"]}
                           loop={99999900}
@@ -102,7 +102,7 @@ const NewSlider = () => {
                   <div className="hero-overlay bg-opacity-60"></div>
                   <div className="hero-content text-white lg:w-[50%]">
                     <div className="">
-                      <h2 className="text-6xl mb-4">
+                      <h2 className="text-6xl mb-4 text-[#2ECC71]">
                         <Typewriter
                           words={["Donate Blood, Save Lives!"]}
                           loop={99999900}

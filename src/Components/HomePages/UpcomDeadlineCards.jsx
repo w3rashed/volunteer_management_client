@@ -21,7 +21,7 @@ const UpcomDeadlineCards = () => {
     <div className="mt-20">
       <div className="text-center mb-8">
         <Zoom duration={2000} delay={500}>
-          <h6 className="text-[#bf0a30] font-bold text-xl">Our Posts</h6>
+          <h6 className="text-[#2ECC71] font-bold text-xl">Our Posts</h6>
         </Zoom>
         <Zoom duration={2000} delay={600}>
           <h3 className="font-bold text-3xl">Volunteers Need Now</h3>
@@ -33,7 +33,7 @@ const UpcomDeadlineCards = () => {
             <div>
               <Card
                 color="transparent"
-                className="mt-8 hover:border-b-8 hover:duration-500 hover:border-[#bf0a30]"
+                className="mt-8 hover:border-b-8 hover:duration-500 hover:border-[#2ECC71]"
               >
                 <CardHeader color="blue-gray" className="relative  h-[300px]">
                   <img src={data.thumbnail} alt="card-image" />
@@ -60,7 +60,10 @@ const UpcomDeadlineCards = () => {
                         {data.volunteersNeeded}
                       </Typography>
                     </div>
-                    <Link to={`/details/${data._id}`} className=" btn ">
+                    <Link
+                      to={`/details/${data._id}`}
+                      className=" btn bg-[#2ECC71] text-white hover:text-[#2ECC71] hover:bg-transparent hover:border-[#2ECC71] duration-500"
+                    >
                       <button>View Details</button>
                     </Link>
                   </div>
@@ -73,7 +76,9 @@ const UpcomDeadlineCards = () => {
       <div className="flex justify-center  mt-10">
         <Zoom duration={2000} delay={700}>
           <Link to="/need_Volunteer">
-            <button className="btn">See all posts</button>
+            <button className="btn px-6 rounded-full bg-[#2ECC71] text-white hover:text-[#2ECC71] hover:bg-transparent hover:border-[#2ECC71] duration-500">
+              See all posts
+            </button>
           </Link>
         </Zoom>
       </div>

@@ -12,8 +12,6 @@ import {
   CardHeader,
   CardBody,
   Typography,
-  CardFooter,
-  Button,
 } from "@material-tailwind/react";
 import { Input } from "@material-tailwind/react";
 import { IoSearchOutline } from "react-icons/io5";
@@ -93,11 +91,16 @@ const NeedVolunteer = () => {
               Need volunteer Post:{lodedData?.length}
             </h1>
             <div>
-              <Link to="/" className="hover:border-b-2 hover:duration-300">
+              <Link
+                to="/"
+                className="hover:border-b-2 hover:duration-300 border-[#2ECC71]"
+              >
                 Home
               </Link>{" "}
               <span>/</span>{" "}
-              <Link className="border-b-2 font-bold">Need Volunteer</Link>
+              <Link className="border-b-2 font-bold text-[#2ECC71] border-[#2ECC71]">
+                Need Volunteer
+              </Link>
             </div>
           </div>
         </div>
@@ -123,7 +126,6 @@ const NeedVolunteer = () => {
                   </Typography>
                   <Typography>No post available</Typography>
                 </CardBody>
-                
               </Card>
             </div>
           </>
@@ -145,7 +147,7 @@ const NeedVolunteer = () => {
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {lodedData.map((data) => (
                     <div key={data._id} className="">
-                      <Card className="mt-6  hover:border-b-8 hover:duration-500 hover:border-[#bf0a30] ">
+                      <Card className="mt-6  hover:border-b-8 hover:duration-500 hover:border-[#2ECC71] ">
                         <CardHeader
                           color="blue-gray"
                           className="relative  h-[300px]"
@@ -185,7 +187,10 @@ const NeedVolunteer = () => {
                                 {data.volunteersNeeded}
                               </Typography>
                             </div>
-                            <Link to={`/details/${data._id}`} className=" btn ">
+                            <Link
+                              to={`/details/${data._id}`}
+                              className=" btn bg-[#2ECC71] text-white hover:text-[#2ECC71] hover:bg-transparent hover:border-[#2ECC71] duration-500 mt-1"
+                            >
                               <button>View Details</button>
                             </Link>
                           </div>
