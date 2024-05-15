@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { Zoom } from "react-awesome-reveal";
 
 const UpcomDeadlineCards = () => {
   const [lodedData, setLodedData] = useState([]);
@@ -19,54 +20,62 @@ const UpcomDeadlineCards = () => {
   return (
     <div className="mt-20">
       <div className="text-center mb-8">
-        <h6 className="text-[#bf0a30] font-bold text-xl">Our Posts</h6>
-        <h3 className="font-bold text-3xl">Volunteers Need Now</h3>
+        <Zoom duration={2000} delay={500}>
+          <h6 className="text-[#bf0a30] font-bold text-xl">Our Posts</h6>
+        </Zoom>
+        <Zoom duration={2000} delay={600}>
+          <h3 className="font-bold text-3xl">Volunteers Need Now</h3>
+        </Zoom>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {lodedData.map((data) => (
-          <div key={data._id}>
-            <Card
-              color="transparent"
-              className="mt-8 hover:border-b-8 hover:duration-500 hover:border-[#bf0a30]"
-            >
-              <CardHeader color="blue-gray" className="relative  h-[300px]">
-                <img src={data.thumbnail} alt="card-image" />
-              </CardHeader>
-              <CardBody>
-                <div className="flex  justify-between">
-                  <Typography variant="h5" className="mb-2 ">
-                    {data.title}
-                  </Typography>
-                  <Typography>
-                    {" "}
-                    <span className="font-semibold">Deadline:</span>
-                    {data.deadline?.split("T")[0]}
-                  </Typography>
-                </div>
-                <div className="flex  justify-between">
-                  <div>
-                    <Typography className="flex">
-                      <span className="font-semibold">Category:</span>{" "}
-                      {data.category}
+          <Zoom key={data._id} duration={2000} delay={500}>
+            <div>
+              <Card
+                color="transparent"
+                className="mt-8 hover:border-b-8 hover:duration-500 hover:border-[#bf0a30]"
+              >
+                <CardHeader color="blue-gray" className="relative  h-[300px]">
+                  <img src={data.thumbnail} alt="card-image" />
+                </CardHeader>
+                <CardBody>
+                  <div className="flex  justify-between">
+                    <Typography variant="h5" className="mb-2 ">
+                      {data.title}
                     </Typography>
-                    <Typography className="flex">
-                      <span className="font-semibold">Volunteer Ndded:</span>{" "}
-                      {data.volunteersNeeded}
+                    <Typography>
+                      {" "}
+                      <span className="font-semibold">Deadline:</span>
+                      {data.deadline?.split("T")[0]}
                     </Typography>
                   </div>
-                  <Link to={`/details/${data._id}`} className=" btn ">
-                    <button>View Details</button>
-                  </Link>
-                </div>
-              </CardBody>
-            </Card>
-          </div>
+                  <div className="flex  justify-between">
+                    <div>
+                      <Typography className="flex">
+                        <span className="font-semibold">Category:</span>{" "}
+                        {data.category}
+                      </Typography>
+                      <Typography className="flex">
+                        <span className="font-semibold">Volunteer Ndded:</span>{" "}
+                        {data.volunteersNeeded}
+                      </Typography>
+                    </div>
+                    <Link to={`/details/${data._id}`} className=" btn ">
+                      <button>View Details</button>
+                    </Link>
+                  </div>
+                </CardBody>
+              </Card>
+            </div>
+          </Zoom>
         ))}
       </div>
       <div className="flex justify-center  mt-10">
-        <Link to="/need_Volunteer">
-          <button className="btn">See all posts</button>
-        </Link>
+        <Zoom duration={2000} delay={700}>
+          <Link to="/need_Volunteer">
+            <button className="btn">See all posts</button>
+          </Link>
+        </Zoom>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ import {
 import Swal from "sweetalert2";
 
 import axios from "axios";
-import { toast } from "react-toastify";
+
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../AuthProvider_&_Firebase/AuthProvider";
 
@@ -23,12 +23,15 @@ import { Helmet } from "react-helmet";
 
 const Details = () => {
   const data = useLoaderData();
-  const id = useParams();
   const [upData, setUpData] = useState();
+  const { id } = useParams();
+
   const { user } = useContext(AuthContext);
   const [startDate, setStartDate] = useState(new Date(data?.deadline));
 
-  console.log(id);
+  // console.log(neededVolunteer);
+  console.log(upData);
+  console.log(data);
   // console.log(user);
   const date = new Date(data?.deadline);
   date.setDate(date?.getDate() + 1);
@@ -47,7 +50,7 @@ const Details = () => {
   useEffect(() => {
     axios
       .get(`https://volunteer-management-server-two.vercel.app/details/${id}`)
-      .then((res) => setUpData(res.data));
+      .then((res) => setUpData(res.data.volunteersNeeded));
   }, [id]);
 
   const handleRequest = (e) => {
@@ -69,7 +72,7 @@ const Details = () => {
       postId: data._id,
     };
     console.log(beAVolunteer);
-    if (data.volunteersNeeded < 1) {
+    if (upData < 1) {
       return Swal.fire({
         position: "top-center",
         icon: "warning",
@@ -95,6 +98,11 @@ const Details = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          axios
+            .get(
+              `https://volunteer-management-server-two.vercel.app/details/${id}`
+            )
+            .then((res) => setUpData(res.data.volunteersNeeded));
         }
       })
       .catch((error) => {
@@ -189,7 +197,7 @@ const Details = () => {
               <Typography variant="h6" className="">
                 Needed volunteer:
               </Typography>
-              {data.volunteersNeeded}
+              {upData}
             </Typography>
             {/* ------------- */}
             <Typography
@@ -217,7 +225,7 @@ const Details = () => {
             <Typography variant="" color="gray" className="mt-3 font-normal">
               {data.description}
             </Typography>
-            {data.volunteersNeeded < 1 ? (
+            {upData < 1 ? (
               <>
                 <button onClick={handleBeVolunteer} className="mt-10 btn">
                   Be a Volunteer
@@ -283,7 +291,7 @@ const Details = () => {
                           name="volunteersNeeded"
                           className="grow"
                           label="Enter No. of volunteers needed"
-                          defaultValue={data.volunteersNeeded}
+                          defaultValue={upData}
                           readOnly
                         />
                         <Input

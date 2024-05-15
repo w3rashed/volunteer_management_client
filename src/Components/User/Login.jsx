@@ -41,11 +41,11 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
-        setLoading(true);
-        navigate(from, { replace: true });
+        navigate(location?.state ? location.state : "/");
         toast.success("Successfully signed in", {
           position: "top-center",
         });
+        // setLoading(true);
         e.target.reset();
       })
       .catch((error) => {
@@ -60,11 +60,11 @@ const Login = () => {
   // handle google log in
   const handlegoogleLogIn = () => {
     googleLogIn().then(() => {
-      setLoading(true);
-      navigate(from, { replace: true });
+      navigate(location?.state ? location.state : "/");
       toast.success("successfully google signed in", {
         position: "top-center",
       });
+      // setLoading(true);
     });
   };
 

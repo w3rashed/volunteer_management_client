@@ -8,7 +8,7 @@ const Navbar = () => {
   const [theme, setTheme] = useState("light");
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(user);
+  // console.log(user);
 
   // theme togle
   useEffect(() => {
@@ -27,7 +27,7 @@ const Navbar = () => {
       document.querySelector("html").setAttribute("data-theme", "light");
     }
   };
-  console.log(theme);
+  // console.log(theme);
 
   const handleLogOut = () => {
     logOut();
