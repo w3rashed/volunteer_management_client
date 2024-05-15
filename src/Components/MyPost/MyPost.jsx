@@ -60,7 +60,8 @@ const MyPost = () => {
     if (result.isConfirmed) {
       try {
         const { data } = await axios.delete(
-          `https://volunteer-management-server-two.vercel.app/volunteer_post/${id}`
+          `https://volunteer-management-server-two.vercel.app/volunteer_post/${id}`,
+          { withCredentials: true }
         );
         if (data.deletedCount > 0) {
           Swal.fire({
@@ -91,7 +92,8 @@ const MyPost = () => {
     if (result.isConfirmed) {
       try {
         const { data } = await axios.delete(
-          `https://volunteer-management-server-two.vercel.app/be_volunteer/${id}`
+          `https://volunteer-management-server-two.vercel.app/be_volunteer/${id}`,
+          { withCredentials: true }
         );
         // update needed volunteer
 

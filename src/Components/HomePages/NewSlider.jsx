@@ -11,7 +11,7 @@ import { Typewriter } from "react-simple-typewriter";
 
 const NewSlider = () => {
   return (
-    <div className=" ">
+    <div className="z-0">
       <div className="">
         <Swiper
           // install Swiper modules
@@ -27,7 +27,7 @@ const NewSlider = () => {
           }}
           style={{ zIndex: 0 }}
         >
-          <div>
+          <div className="">
             <div>
               <SwiperSlide>
                 <div

@@ -8,7 +8,7 @@ import NewSlider from "./NewSlider";
 
 const Home = () => {
   return (
-    <div>
+    <div className="z-0">
       <Helmet>
         <title>Home_EngageEase</title>
       </Helmet>

@@ -81,52 +81,54 @@ const Navbar = () => {
         </NavLink>
       </li>
 
-      <div className="dropdown z-1000 ">
-        <div tabIndex={0} role="button" className="  m-1">
-          My Profile
+      <li className="z-50">
+        <div className="dropdown z-50 ">
+          <div tabIndex={0} role="button" className="  m-1">
+            My Profile
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content  menu p-2 shadow bg-base-100 rounded-box w-52 mt-36"
+          >
+            <li>
+              <NavLink
+                style={({ isActive, isTransitioning }) => {
+                  return {
+                    fontWeight: isActive ? "bold" : "",
+                    backgroundColor: isActive ? "transparent" : "",
+                    // border: isActive ? "1px solid #23BE0A" : "",
+                    color: isActive ? "#2ECC71" : "",
+                    viewTransitionName: isTransitioning ? "slide" : "",
+                  };
+                }}
+                to="/add_post"
+              >
+                Add Post
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                style={({ isActive, isTransitioning }) => {
+                  return {
+                    fontWeight: isActive ? "bold" : "",
+                    backgroundColor: isActive ? "transparent" : "",
+                    // border: isActive ? "1px solid #23BE0A" : "",
+                    color: isActive ? "#2ECC71" : "",
+                    viewTransitionName: isTransitioning ? "slide" : "",
+                  };
+                }}
+                to="/my_post"
+              >
+                My Post
+              </NavLink>
+            </li>
+          </ul>
         </div>
-        <ul
-          tabIndex={0}
-          className="dropdown-content  menu p-2 shadow bg-base-100 rounded-box w-52"
-        >
-          <li>
-            <NavLink
-              style={({ isActive, isTransitioning }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  backgroundColor: isActive ? "transparent" : "",
-                  // border: isActive ? "1px solid #23BE0A" : "",
-                  color: isActive ? "#2ECC71" : "",
-                  viewTransitionName: isTransitioning ? "slide" : "",
-                };
-              }}
-              to="/add_post"
-            >
-              Add Post
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              style={({ isActive, isTransitioning }) => {
-                return {
-                  fontWeight: isActive ? "bold" : "",
-                  backgroundColor: isActive ? "transparent" : "",
-                  // border: isActive ? "1px solid #23BE0A" : "",
-                  color: isActive ? "#2ECC71" : "",
-                  viewTransitionName: isTransitioning ? "slide" : "",
-                };
-              }}
-              to="/my_post"
-            >
-              My Post
-            </NavLink>
-          </li>
-        </ul>
-      </div>
+      </li>
     </Zoom>
   );
   return (
-    <div className=" mx-auto my-4">
+    <div className=" mx-auto my-4 z-50">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -154,16 +156,16 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img
               src="https://i.ibb.co/7G9wvG3/image-removebg-preview.png"
               className="size-12"
               alt=""
             />
             <a className="font-bold text-xl">EngageEase</a>
-          </div>
+          </Link>
         </div>
-        <div className="navbar-center hidden lg:flex relative ">
+        <div className="navbar-center hidden lg:flex  ">
           <ul className="menu menu-horizontal px-1 items-center ">
             {/* links */}
             {links}
@@ -191,7 +193,7 @@ const Navbar = () => {
 
                   <ul
                     tabIndex={0}
-                    className="dropdown-content z-[500] menu p-2 shadow bg-base-100 rounded-box w-52 "
+                    className="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52 "
                   >
                     <li>
                       <a>{user.displayName}</a>

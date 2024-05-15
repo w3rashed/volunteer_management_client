@@ -1,4 +1,5 @@
 import { Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
 const LINKS = [
@@ -24,7 +25,7 @@ const Footer = () => {
         <footer className="relative w-full py-10">
           <div className="mx-auto w-full max-w-7xl px-8">
             <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2">
-              <div className="flex ">
+              <Link to="/" className="flex ">
                 <img
                   src="https://i.ibb.co/7G9wvG3/image-removebg-preview.png"
                   className="size-12"
@@ -41,7 +42,7 @@ const Footer = () => {
                     delaySpeed={1000}
                   />
                 </Typography>
-              </div>
+              </Link>
 
               <div className="grid grid-cols-3 justify-between gap-4">
                 {LINKS.map(({ title, items }) => (
