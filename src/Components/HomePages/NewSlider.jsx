@@ -19,8 +19,8 @@ const NewSlider = () => {
           slidesPerView={1}
           navigation={true}
           pagination={{ clickable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
+          // onSwiper={(swiper) => console.log(swiper)}
+          // onSlideChange={() => console.log("slide change")}
           autoplay={{
             delay: 4000,
             disableOnInteraction: false,

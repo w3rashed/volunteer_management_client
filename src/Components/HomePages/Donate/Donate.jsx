@@ -4,8 +4,11 @@ import {
   CardHeader,
   Typography,
 } from "@material-tailwind/react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import { useEffect, useState } from "react";
-import { GiHeavyCollar, GiTakeMyMoney } from "react-icons/gi";
+import { GiHeavyCollar,} from "react-icons/gi";
+import CheckOutForm from "./CheckOutForm";
 
 const Donate = () => {
   const [data, setData] = useState([]);
@@ -14,6 +17,9 @@ const Donate = () => {
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
+
+  // TODO: add publishable key
+  const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
   return (
     <div>
@@ -39,12 +45,7 @@ const Donate = () => {
                   <Typography className="flex">{item.description}</Typography>
                   <Typography className="flex">
                     <p className="my-5 flex items-center gap-2">
-                      <GiHeavyCollar /> Collected : ${item.total_collected}
-                    </p>
-                  </Typography>
-                  <Typography className="flex">
-                    <p className=" flex items-center gap-2">
-                      <GiTakeMyMoney /> Target : ${item.targe}
+                      <GiHeavyCollar /> Donate for : $ 100
                     </p>
                   </Typography>
                 </div>
@@ -64,21 +65,15 @@ const Donate = () => {
                 className="modal modal-bottom sm:modal-middle"
               >
                 <div className="modal-box">
-                  <h3 className="font-bold text-lg">Hello!</h3>
-                  <p className="py-4">
-                    Press ESC key or click the button below to close
-                  </p>
-                  <div className="modal-action">
-                    <button
-                      className="px-8 py-2.5 w-full mt-5 leading-5 border rounded-md   bg-[#2ECC71] text-white hover:text-[#2ECC71] hover:bg-transparent hover:border-[#2ECC71] duration-500"
-                      onClick={() => {
-                        const modal = document.getElementById("my_modal_5");
-                        modal.close();
-                      }}
-                    >
-                      Request
-                    </button>
+                  {/* start */}
+                  <div>
+                    <Elements stripe={stripePromise}>
+                      <CheckOutForm></CheckOutForm>
+                    </Elements>
                   </div>
+
+                  {/* end */}
+
                   <div className="modal-action flex justify-center w-full">
                     <form method="dialog" className="w-full">
                       {/* if there is a button in form, it will close the modal */}

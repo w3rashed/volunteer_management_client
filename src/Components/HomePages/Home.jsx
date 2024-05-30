@@ -5,7 +5,7 @@ import UpcomDeadlineCards from "./UpcomDeadlineCards";
 import Mission from "./Mission";
 import Sponsor from "./Sponsor";
 import NewSlider from "./NewSlider";
-import Donate from "./Donate";
+import Donate from "./Donate/Donate";
 
 const Home = () => {
   return (
