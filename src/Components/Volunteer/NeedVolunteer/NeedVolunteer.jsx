@@ -150,7 +150,7 @@ const NeedVolunteer = () => {
                       <Card className="mt-6  hover:border-b-8 hover:duration-500 hover:border-[#2ECC71] ">
                         <CardHeader
                           color="blue-gray"
-                          className="relative  h-[300px]"
+                          className="relative  h-[210px]"
                         >
                           <img src={data.thumbnail} alt="card-image" />
                         </CardHeader>

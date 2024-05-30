@@ -11,6 +11,7 @@ import MyPost from "../Components/MyPost/MyPost";
 import PrivetRoute from "./PrivetRout/PrivetRoute";
 import UpdatePost from "../Components/MyPost/UpdatePost";
 import BeAVolunteer from "../Components/Volunteer/BeAVolunteer/BeAVolunteer";
+import DonateNow from "../Components/DonateNow/DonateNow";
 
 const Routes = createBrowserRouter([
   {
@@ -74,6 +75,7 @@ const Routes = createBrowserRouter([
             `https://volunteer-management-server-two.vercel.app/details/${params.id}`
           ),
       },
+    
       {
         path: "/login",
         element: <Login></Login>,

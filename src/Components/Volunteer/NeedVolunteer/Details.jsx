@@ -153,14 +153,14 @@ const Details = () => {
       <div className="flex justify-center ">
         <Card
           color="transparent"
-          className=" flex-col  lg:flex-row lg:h-[500px]"
+          className=" flex-col h-full  lg:flex-row lg:h-[600px] w-full"
         >
           <CardHeader
             shadow={false}
             floated={false}
-            className="m-0  shrink-0 rounded-r-none"
+            className="m-0  shrink-0 rounded-r-none basis-[50%]"
           >
-            <img src={data.thumbnail} alt="card-image" className=" w-full " />
+            <img src={data.thumbnail} alt="card-image" className=" h-full " />
           </CardHeader>
           <CardBody className=" w-full ">
             <CardFooter className="flex  justify-between">

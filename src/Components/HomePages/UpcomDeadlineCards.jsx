@@ -35,7 +35,7 @@ const UpcomDeadlineCards = () => {
                 color="transparent"
                 className="mt-8 hover:border-b-8 hover:duration-500 hover:border-[#2ECC71]"
               >
-                <CardHeader color="blue-gray" className="relative  h-[300px]">
+                <CardHeader color="blue-gray" className="relative  h-[210px]">
                   <img src={data.thumbnail} alt="card-image" />
                 </CardHeader>
                 <CardBody>

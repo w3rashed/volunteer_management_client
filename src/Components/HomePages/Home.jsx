@@ -5,6 +5,7 @@ import UpcomDeadlineCards from "./UpcomDeadlineCards";
 import Mission from "./Mission";
 import Sponsor from "./Sponsor";
 import NewSlider from "./NewSlider";
+import Donate from "./Donate";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <NewSlider></NewSlider>
       <Mission></Mission>
       <UpcomDeadlineCards></UpcomDeadlineCards>
+      <Donate></Donate>
       <OurVolunteers></OurVolunteers>
       <Sponsor></Sponsor>
     </div>

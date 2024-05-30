@@ -1,0 +1,23 @@
+[
+    {
+      "title": "Animal Shelter Caretakers",
+      "img":"https://i.ibb.co/LPXYjxT/donate2.jpg",
+      "description": "Provide daily care for animals in a shelter setting, including feeding, cleaning, socialization, and enrichment activities. Contribute to the well-being of animals awaiting adoption.",
+      "total_collected": 0,  
+      "targe": 0
+    },
+    {
+      "title": "Education Program Assistants",
+      "img":"https://i.ibb.co/LPXYjxT/donate2.jpg",
+      "description": "Support educators in delivering engaging and effective learning experiences. Assist with classroom management, materials preparation, and student interaction.",
+      "total_collected": 0, 
+      "targe": 0
+    },
+    {
+      "title": "Nutrition Education Workshop Volunteers",
+      "img":"https://i.ibb.co/LPXYjxT/donate2.jpg",
+      "description": "Share knowledge about healthy eating habits and food preparation in community workshops. Motivate participants to make positive dietary changes.",
+      "total_collected": 0,  
+      "targe": 0
+    }
+]

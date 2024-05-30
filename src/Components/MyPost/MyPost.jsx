@@ -129,7 +129,7 @@ const MyPost = () => {
   //   return <h2>hiiiiiiiiiiiiiiiiiii</h2>;
   // }
 
-  console.log(beVolunteer);
+  // console.log(beVolunteer);
   return (
     <div>
       <Helmet>

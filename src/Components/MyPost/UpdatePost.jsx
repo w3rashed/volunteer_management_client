@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../AuthProvider_&_Firebase/AuthProvider";
 import axios from "axios";
-import { toast } from "react-toastify";
+
 import { Link, useLoaderData } from "react-router-dom";
 import { Input } from "@material-tailwind/react";
 import Swal from "sweetalert2";
@@ -13,7 +13,9 @@ const UpdatePost = () => {
   const data = useLoaderData();
   console.log(data);
   const { user } = useContext(AuthContext);
+  const userPhoto = user?.photoURL;
   const [startDate, setStartDate] = useState(new Date(data.deadline));
+  console.log(userPhoto);
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -39,6 +41,7 @@ const UpdatePost = () => {
       deadline: new Date(deadline),
       name,
       email,
+      userPhoto,
     };
     console.log(update);
 

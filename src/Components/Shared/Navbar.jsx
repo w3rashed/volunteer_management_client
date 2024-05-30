@@ -125,6 +125,24 @@ const Navbar = () => {
           </ul>
         </div>
       </li>
+      {/* <div className="bg-[#2ECC71] text-white rounded-xl">
+        <li>
+          <NavLink
+            style={({ isActive, isTransitioning }) => {
+              return {
+                fontWeight: isActive ? "bold" : "",
+                backgroundColor: isActive ? "transparent" : "",
+                // border: isActive ? "1px solid #23BE0A" : "",
+                color: isActive ? "#2ECC71" : "",
+                viewTransitionName: isTransitioning ? "slide" : "",
+              };
+            }}
+            to="/donate"
+          >
+            Donate Now
+          </NavLink>
+        </li>
+      </div> */}
     </Zoom>
   );
   return (
