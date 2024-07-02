@@ -12,7 +12,11 @@
 - **Add a post for Volunteer**:Create posts to recruit volunteers for specific tasks or causes.
 - **My posts**:  View, edit, or delete posts you've added.
 - **MyRequests**:  View and manage requests you've made to volunteer for opportunities.
-- 
+
+## Technology Stack
+ - React.js for dynamic user interfaces.
+ - Material-UI  for design components.
+ - React Router for navigation.
 
 
 # NPM pacages .....
@@ -24,6 +28,12 @@
 - [react-simple-typewriter](https://github.com/awran5/react-simple-typewriter)
 
 
+## Getting Started
+
+- Clone the repository.
+- Install dependencies.
+- Configure environment variables.
+- Run the application.
 
 
 # GitHub Private repo links
